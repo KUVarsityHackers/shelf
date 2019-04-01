@@ -19,11 +19,11 @@ def main():
     # if request.method == 'POST':
     #     return handle_request(request.form)
     if request.method == 'GET':
-        return render_template('index.html')
+        return render_template('home.html')
 
 @app.route('/login' , methods=['POST', 'GET'])
 def logon():
-
+    #pushes logon information to firestore
     s = request.form.to_dict()['json_string']
     json_acceptable_string = s.replace("'", "\"")
     d = json.loads(json_acceptable_string)
