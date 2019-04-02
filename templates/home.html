@@ -10,31 +10,8 @@
  		<meta charset="utf-8" />
  		<meta name="viewport" content="width=device-width, initial-scale=1" />
  		<link rel="stylesheet" href="../static/main.css" />
-
-		 <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
 		 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
 		 <script src="cookies.js"></script>
-
-<script>
-// var config = {
-// 		apiKey: ,
-// 		authDomain: ,
-// 		databaseURL: ,
-// 		projectId: 
-// 	};
-firebase.initializeApp(config);
-var cookie = getCookie("id");
-if(cookie == ""){
-	var myRef = firebase.database().ref("cart").push();
-	cookie = myRef.key;
-	var expDate = getExpDate(180, 0, 0);
-  setCookie("id", cookie, expDate);
-}
-console.log("Home page cookie: ");
-console.log(cookie);
-
-</script>
 
  	</head>
 	<!-- <body onunload="saveData()"> -->
