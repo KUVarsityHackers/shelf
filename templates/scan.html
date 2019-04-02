@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>shelf</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../static/main.css" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="cookies.js"></script>
+
+</head>
+<!-- <body onunload="saveData()"> -->
+
+<body onunload="saveData()">
+    <!-- Banner -->
+    <section id="banner">
+        <h2>list a book</h2>
+        <p>
+            please take a second to fill out the listing below
+        </p>
+    </section>
+    <!-- Form -->
+    <section class="box form">
+        <h3>
+            Listing Form
+        </h3>
+        <form onsubmit="submitListing()">
+            <label>
+                What is your first name? (Will be public)
+            </label>
+            <input type="text" id="firstname">
+            <br />
+            <label>
+                What is your last name? (Will be kept private)
+            </label>
+            <input type="text" id="lastname">
+            <br />
+            <label>
+                What is your email?
+            </label>
+            <input type="email" id="email">
+            <br />
+            <label>
+                What is the ISBN of your book?
+            </label>
+            <input type="text" id="isbn">
+            <br />
+            <label>
+                What is the street address of where the book will be?
+            </label>
+            <input type="text" id="address">
+            <br />
+            <label>
+                What is the city?
+            </label>
+            <input type="text" id="city">
+            <br />
+            <label>
+                And finally, which state?
+            </label>
+            <input type="text" id="state">
+            <br />
+            <input type="submit" value="Submit Listing">
+        </form>
+    </section>
+    <!-- Footer -->
+    <footer id="footer">
+        <ul class="copyright">
+            <li>&copy; 2019 KU Varsity Hackers. All rights reserved.</li>
+        </ul>
+    </footer>
+    </div>
+    <script src = "../static/index.js"></script>
+</body>
+
+</html>
