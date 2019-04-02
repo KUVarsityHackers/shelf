@@ -13,6 +13,9 @@ import json
 
 app = Flask(__name__)
 
+#reference for books collection from firestore
+book_ref = db.collection(u'books')
+
 @app.route('/', methods=['GET', 'POST'])
 def main():
 
@@ -21,21 +24,21 @@ def main():
     if request.method == 'GET':
         return render_template('home.html')
 
-@app.route('/login' , methods=['POST', 'GET'])
-def logon():
-    #pushes logon information to firestore
-    s = request.form.to_dict()['json_string']
-    json_acceptable_string = s.replace("'", "\"")
-    d = json.loads(json_acceptable_string)
+# @app.route('/login' , methods=['POST', 'GET'])
+# def logon():
+#     #pushes logon information to firestore
+#     s = request.form.to_dict()['json_string']
+#     json_acceptable_string = s.replace("'", "\"")
+#     d = json.loads(json_acceptable_string)
     
-    userID = d['userID']
-    password = d['password']
+#     userID = d['userID']
+#     password = d['password']
 
-    doc_ref = db.collection(u'users').document(userID)
-    doc_ref.set({
-        u'password': password
-    })
-    return(True)
+#     doc_ref = db.collection(u'users').document(userID)
+#     doc_ref.set({
+#         u'password': password
+#     })
+#     return(True)
 
 @app.route('/listing' , methods=['POST', 'GET'])
 def listing():
@@ -48,12 +51,26 @@ def listing():
     user = d['user']
     email = d['email']
 
-    doc_ref = db.collection(u'books').document(user)
+    doc_ref = book_ref.document(user)
     doc_ref.set({
         u'isbn': isbn,
         u'email': email,
-
     })
+    return(True)
+
+@app.route('/search' , methods=['POST', 'GET'])
+def search():
+    #pushes logon information to firestore
+    s = request.form.to_dict()['json_string']
+    json_acceptable_string = s.replace("'", "\"")
+    d = json.loads(json_acceptable_string)
+    
+    isbn = d['isbn']
+    
+    try:
+        book_ref.document(isbn).get()
+    except google.cloud.exceptions.NotFound:
+        return("Nothing was found.")
     return(True)
 
 if __name__ == '__main__':
