@@ -37,5 +37,24 @@ def logon():
     })
     return(True)
 
+@app.route('/listing' , methods=['POST', 'GET'])
+def listing():
+    #pushes logon information to firestore
+    s = request.form.to_dict()['json_string']
+    json_acceptable_string = s.replace("'", "\"")
+    d = json.loads(json_acceptable_string)
+    
+    isbn = d['isbn']
+    user = d['user']
+    email = d['email']
+
+    doc_ref = db.collection(u'books').document(user)
+    doc_ref.set({
+        u'isbn': isbn,
+        u'email': email,
+
+    })
+    return(True)
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3001, debug=True)
