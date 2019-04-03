@@ -14,7 +14,6 @@ import json
 app = Flask(__name__)
 
 #reference for books collection from firestore
-book_ref = db.collection(u'books')
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
@@ -54,15 +53,17 @@ def listing():
     s = request.form.to_dict()['json_string']
     json_acceptable_string = s.replace("'", "\"")
     d = json.loads(json_acceptable_string)
-    
+
     isbn = d['isbn']
     user = d['user']
     email = d['email']
 
-    doc_ref = book_ref.document(user)
+    doc_ref = db.collection(u'lenders').document(user)
     doc_ref.set({
-        u'isbn': isbn,
         u'email': email,
+    })
+    doc_ref.collection(u'books').document("book").set({
+        u'isbn': isbn
     })
     return(True)
 
