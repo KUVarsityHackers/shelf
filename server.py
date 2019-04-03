@@ -18,11 +18,19 @@ book_ref = db.collection(u'books')
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
+    return render_template('index.html')
 
-    # if request.method == 'POST':
-    #     return handle_request(request.form)
-    if request.method == 'GET':
-        return render_template('home.html')
+@app.route('/home.html', methods=['GET', 'POST'])
+def toHome():
+    return render_template('home.html')
+
+@app.route('/list.html', methods=['GET', 'POST'])
+def toList():
+    return render_template('list.html')
+
+# @app.route('/borrow.html', methods=['GET', 'POST'])
+# def toBorrow():
+#     return render_template('list.html')
 
 # @app.route('/login' , methods=['POST', 'GET'])
 # def logon():
@@ -67,10 +75,10 @@ def search():
     
     isbn = d['isbn']
     
-    try:
-        book_ref.document(isbn).get()
-    except google.cloud.exceptions.NotFound:
-        return("Nothing was found.")
+    # try:
+    #     book_ref.document(isbn).get()
+    # except google.cloud.exceptions.NotFound:
+    #     return("Nothing was found.")
     return(True)
 
 if __name__ == '__main__':
