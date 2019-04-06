@@ -54,17 +54,24 @@ def listing():
     json_acceptable_string = s.replace("'", "\"")
     d = json.loads(json_acceptable_string)
 
-    isbn = d['isbn']
-    user = d['user']
-    email = d['email']
+    isbn   = d['isbn']
+    user   = d['user']
+    email  = d['email']
+    city   = d['city']
+    state  = d['state']
+    street = d['street']
 
     doc_ref = db.collection(u'lenders').document(user)
     doc_ref.set({
-        u'email': email,
+        u'email' : email,
+        u'street': street,
+        u'city'  : city,
+        u'state' : state
     })
-    doc_ref.collection(u'books').document("book").set({
+    db.collection(u'books').document(isbn).set({
         u'isbn': isbn
     })
+
     return(True)
 
 @app.route('/search' , methods=['POST', 'GET'])
