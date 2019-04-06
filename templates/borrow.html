@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>shelf</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../static/main.css" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="cookies.js"></script>
+
+</head>
+<!-- <body onunload="saveData()"> -->
+
+<body onunload="saveData()">
+    <!-- Banner -->
+    <section id="banner">
+        <h2>borrow a book</h2>
+        <p>
+            please enter as much information about the book as you know
+        </p>
+    </section>
+    <!-- Form -->
+    <section class="box form" id="mainContainer">
+        <h3>
+            Borrowing Form
+        </h3>
+        <form onsubmit="queryBorrow()">
+            <label>
+                Book Title
+            </label>
+            <input type="text" id="title">
+            <br/>
+            <label>
+                Book Author
+            </label>
+            <input type="text" id="author">
+            <br/>
+            <label>
+                Book ISBN
+            </label>
+            <input type="text" id=borrowISBN>
+            <input type="submit" value="check the shelf">
+        </form>
+    </section>
+    <!-- Footer -->
+    <footer id="footer">
+        <ul class="copyright">
+            <li>&copy; 2019 KU Varsity Hackers. All rights reserved.</li>
+        </ul>
+    </footer>
+    </div>
+    <script src = "../static/index.js"></script>
+</body>
+
+</html>
