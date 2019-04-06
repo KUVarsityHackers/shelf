@@ -59,12 +59,8 @@ def listing():
     user = d['user']
     email = d['email']
 
-    jsonFile = getBookInfo(isbn)
-
-    bookInfo = jsonFile['items'][0]['volumeInfo']
-    title = bookInfo['title']
-    author = bookInfo['authors']
-    publishedDate = bookInfo['publishedDate']
+    sourApple = getBookInfo(9781101980132)
+    print("Sour Apple: ",sourApple)
 
     doc_ref = db.collection(u'lenders').document(user)
     doc_ref.set({
@@ -93,3 +89,4 @@ def search():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3001, debug=True)
+
