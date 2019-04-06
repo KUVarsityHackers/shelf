@@ -1,6 +1,7 @@
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+from bookInfo import getBookInfo
 
 cred = credentials.Certificate('serviceKey.json')
 default_app = firebase_admin.initialize_app(cred)
@@ -58,6 +59,13 @@ def listing():
     user = d['user']
     email = d['email']
 
+    jsonFile = getBookInfo(isbn)
+
+    bookInfo = jsonFile['items'][0]['volumeInfo']
+    title = bookInfo['title']
+    author = bookInfo['authors']
+    publishedDate = bookInfo['publishedDate']
+
     doc_ref = db.collection(u'lenders').document(user)
     doc_ref.set({
         u'email': email,
@@ -65,6 +73,7 @@ def listing():
     doc_ref.collection(u'books').document("book").set({
         u'isbn': isbn
     })
+    
     return(True)
 
 @app.route('/search' , methods=['POST', 'GET'])
