@@ -1,7 +1,7 @@
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-from .bookInfo import getBookInfo
+from bookInfo import getBookInfo
 
 cred = credentials.Certificate('serviceKey.json')
 default_app = firebase_admin.initialize_app(cred)
@@ -60,7 +60,6 @@ def listing():
     email = d['email']
 
     sourApple = getBookInfo(9781101980132)
-
     print("Sour Apple: ",sourApple)
 
     doc_ref = db.collection(u'lenders').document(user)
@@ -90,3 +89,4 @@ def search():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3001, debug=True)
+
