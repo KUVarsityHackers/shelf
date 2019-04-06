@@ -16,7 +16,6 @@ import requests
 app = Flask(__name__)
 
 #reference for books collection from firestore
-
 @app.route('/', methods=['GET', 'POST'])
 def main():
     return render_template('index.html')
@@ -101,3 +100,4 @@ def search():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3001, debug=True)
+
