@@ -15,9 +15,10 @@ def getBookInfo(isbnNum):
     title = bookInfo['title']
     author = bookInfo['authors']
     publishedDate = bookInfo['publishedDate']
-    print(title)
-    print(author)
-    print(publishedDate)
-    return jsonFile
+    banana = []
+    banana.append(title)
+    banana.append(publishedDate)
+    banana.append(author)
+    return banana
 
 getBookInfo(9781101980132)

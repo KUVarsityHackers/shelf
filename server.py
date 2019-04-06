@@ -59,12 +59,9 @@ def listing():
     user = d['user']
     email = d['email']
 
-    jsonFile = getBookInfo(isbn)
+    sourApple = getBookInfo(9781101980132)
 
-    bookInfo = jsonFile['items'][0]['volumeInfo']
-    title = bookInfo['title']
-    author = bookInfo['authors']
-    publishedDate = bookInfo['publishedDate']
+    print(sourApple[0])
 
     doc_ref = db.collection(u'lenders').document(user)
     doc_ref.set({
