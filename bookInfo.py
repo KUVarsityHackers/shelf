@@ -5,16 +5,19 @@
 import requests
 import json
 
-def getBookInfo(isbnInput):
-    #get isbn from front end
+#get isbn from front end
+def getBookInfo(isbnNum):
     isbn = str(9781101980132)
     url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn
     req = requests.get(url = url)
     jsonFile = req.json()
+    bookInfo = jsonFile['items'][0]['volumeInfo']
+    title = bookInfo['title']
+    author = bookInfo['authors']
+    publishedDate = bookInfo['publishedDate']
+    print(title)
+    print(author)
+    print(publishedDate)
     return jsonFile
 
-'''bookInfo = jsonFile['items'][0]['volumeInfo']
-title = bookInfo['title']
-author = bookInfo['authors']
-publishedDate = bookInfo['publishedDate']'''
-
+getBookInfo(9781101980132)
