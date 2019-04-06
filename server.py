@@ -1,6 +1,7 @@
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+#from bookInfo import getBookInfo
 
 cred = credentials.Certificate('serviceKey.json')
 default_app = firebase_admin.initialize_app(cred)
@@ -10,6 +11,7 @@ import flask
 from flask import Flask, render_template, request, Response
 
 import json
+import requests
 
 app = Flask(__name__)
 
@@ -61,6 +63,13 @@ def listing():
     state  = d['state']
     street = d['street']
 
+    jsonFile = getBookInfo(isbn)
+
+    bookInfo = jsonFile['items'][0]['volumeInfo']
+    title = bookInfo['title']
+    author = bookInfo['authors']
+    publishedDate = bookInfo['publishedDate']
+    
     doc_ref = db.collection(u'lenders').document(user)
     doc_ref.set({
         u'email' : email,
@@ -69,9 +78,10 @@ def listing():
         u'state' : state
     })
     db.collection(u'books').document(isbn).set({
-        u'isbn': isbn
+        u'title': title,
+        u'author': author,
+        u'publishedDate': publishedDate
     })
-
     return(True)
 
 @app.route('/search' , methods=['POST', 'GET'])
@@ -91,3 +101,11 @@ def search():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3001, debug=True)
+
+def getBookInfo(isbnInput):
+    #get isbn from front end
+    isbn = str(isbnInput)
+    url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn
+    req = requests.get(url = url)
+    jsonFile = req.json()
+    return jsonFile
