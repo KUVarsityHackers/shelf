@@ -18,6 +18,3 @@ title = bookInfo['title']
 author = bookInfo['authors']
 publishedDate = bookInfo['publishedDate']'''
 
-print(title)
-print(author)
-print(publishedDate)
