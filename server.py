@@ -11,11 +11,11 @@ import flask
 from flask import Flask, render_template, request, Response
 
 import json
-import requests
 
 app = Flask(__name__)
 
 #reference for books collection from firestore
+
 @app.route('/', methods=['GET', 'POST'])
 def main():
     return render_template('index.html')
@@ -55,33 +55,22 @@ def listing():
     json_acceptable_string = s.replace("'", "\"")
     d = json.loads(json_acceptable_string)
 
-    isbn   = d['isbn']
-    user   = d['user']
-    email  = d['email']
-    city   = d['city']
-    state  = d['state']
-    street = d['street']
+    isbn = d['isbn']
+    user = d['user']
+    email = d['email']
 
     sourApple = getBookInfo(9781101980132)
+    print("Sour Apple: ",sourApple)
 
-    bookInfo      = jsonFile['items'][0]['volumeInfo']
-    title         = bookInfo['title']
-    author        = bookInfo['authors']
-    publishedDate = bookInfo['publishedDate']
-    
     doc_ref = db.collection(u'lenders').document(user)
     doc_ref.set({
-        u'email' : email,
-        u'street': street,
-        u'city'  : city,
-        u'state' : state
+        u'email': email,
     })
-    db.collection(u'books').document(isbn).set({
-        u'title': title,
-        u'author': author,
-        u'publishedDate': publishedDate
+    doc_ref.collection(u'books').document("book").set({
+        u'isbn': isbn
     })
-    return(str(True))
+    
+    return(True)
 
 @app.route('/search' , methods=['POST', 'GET'])
 def search():
@@ -96,7 +85,7 @@ def search():
     #     book_ref.document(isbn).get()
     # except google.cloud.exceptions.NotFound:
     #     return("Nothing was found.")
-    return(str(True))
+    return(True)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3001, debug=True)

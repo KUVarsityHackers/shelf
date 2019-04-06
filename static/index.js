@@ -14,21 +14,15 @@ function onSubmit() {
 function putOnShelf() {
 
   let userID = document.getElementById("userName").value;
-  let email  = document.getElementById("email").value;
-  let isbn   = document.getElementById("isbn").value;
-  let street = document.getElementById("address").value;
-  let city   = document.getElementById("city").value;
-  let state  = document.getElementById("state").value;
+  let email = document.getElementById("email").value;
+  let isbn = document.getElementById("isbn").value;
 
   const url = "/listing";
   let response = $.post(url, {
     json_string: JSON.stringify({
       user: userID,
       email: email,
-      isbn: isbn,
-      city: city,
-      state: state,
-      street: street
+      isbn: isbn
     })
   })
   console.log(response);

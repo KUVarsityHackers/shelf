@@ -7,7 +7,7 @@ import json
 
 #get isbn from front end
 def getBookInfo(isbnNum):
-    isbn = str(isbnNum)
+    isbn = '9781101980132'
     url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn
     req = requests.get(url = url)
     jsonFile = req.json()
@@ -20,3 +20,5 @@ def getBookInfo(isbnNum):
     banana.append(publishedDate)
     banana.append(author)
     return banana
+
+# getBookInfo(9781101980132)
