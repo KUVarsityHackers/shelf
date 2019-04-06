@@ -1,7 +1,7 @@
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-from bookInfo import getBookInfo
+from .bookInfo import getBookInfo
 
 cred = credentials.Certificate('serviceKey.json')
 default_app = firebase_admin.initialize_app(cred)
@@ -61,7 +61,7 @@ def listing():
 
     sourApple = getBookInfo(9781101980132)
 
-    print(sourApple[0])
+    print("Sour Apple: ",sourApple)
 
     doc_ref = db.collection(u'lenders').document(user)
     doc_ref.set({
