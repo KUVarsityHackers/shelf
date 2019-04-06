@@ -1,7 +1,7 @@
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-#from bookInfo import getBookInfo
+from bookInfo import getBookInfo
 
 cred = credentials.Certificate('serviceKey.json')
 default_app = firebase_admin.initialize_app(cred)
@@ -82,7 +82,7 @@ def listing():
         u'author': author,
         u'publishedDate': publishedDate
     })
-    return(True)
+    return(str(True))
 
 @app.route('/search' , methods=['POST', 'GET'])
 def search():
@@ -97,15 +97,7 @@ def search():
     #     book_ref.document(isbn).get()
     # except google.cloud.exceptions.NotFound:
     #     return("Nothing was found.")
-    return(True)
+    return(str(True))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3001, debug=True)
-
-def getBookInfo(isbnInput):
-    #get isbn from front end
-    isbn = str(isbnInput)
-    url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn
-    req = requests.get(url = url)
-    jsonFile = req.json()
-    return jsonFile
