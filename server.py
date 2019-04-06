@@ -63,11 +63,11 @@ def listing():
     state  = d['state']
     street = d['street']
 
-    jsonFile = getBookInfo(isbn)
+    sourApple = getBookInfo(9781101980132)
 
-    bookInfo = jsonFile['items'][0]['volumeInfo']
-    title = bookInfo['title']
-    author = bookInfo['authors']
+    bookInfo      = jsonFile['items'][0]['volumeInfo']
+    title         = bookInfo['title']
+    author        = bookInfo['authors']
     publishedDate = bookInfo['publishedDate']
     
     doc_ref = db.collection(u'lenders').document(user)
