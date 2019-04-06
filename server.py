@@ -58,18 +58,29 @@ def listing():
     isbn = d['isbn']
     user = d['user']
     email = d['email']
+    #address = d['address']
+    #city = d['city']
+    #state = d['state']
 
-    sourApple = getBookInfo(9781101980132)
-    print("Sour Apple: ",sourApple)
+    sourApple = getBookInfo(isbn)
 
     doc_ref = db.collection(u'lenders').document(user)
     doc_ref.set({
-        u'email': email,
-    })
-    doc_ref.collection(u'books').document("book").set({
-        u'isbn': isbn
+        u'email': email
     })
     
+    
+    #there is an issue when getting the address, city, and state from  the list.html file
+
+    book_ref = db.collection(u'books').document(isbn)
+    book_ref.set({
+        u'title': sourApple[0],
+        u'publishedDate': sourApple[1],
+        u'isbn': isbn
+    })
+    #this does not currently work
+    db.collection(u'books').document(isbn).collection(user).document(isbn)
+
     return(True)
 
 @app.route('/search' , methods=['POST', 'GET'])
