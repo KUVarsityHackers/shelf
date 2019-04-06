@@ -15,7 +15,6 @@ import json
 app = Flask(__name__)
 
 #reference for books collection from firestore
-
 @app.route('/', methods=['GET', 'POST'])
 def main():
     return render_template('index.html')
@@ -59,8 +58,8 @@ def listing():
     user = d['user']
     email = d['email']
 
-    sourApple = getBookInfo(9781101980132)
-    print("Sour Apple: ",sourApple)
+    sourApple = getBookInfo(isbn)
+    
 
     doc_ref = db.collection(u'lenders').document(user)
     doc_ref.set({
@@ -69,6 +68,9 @@ def listing():
     doc_ref.collection(u'books').document("book").set({
         u'isbn': isbn
     })
+
+  
+
     
     return(True)
 
