@@ -13,10 +13,10 @@ def getBookInfo(isbnInput):
     jsonFile = req.json()
     return jsonFile
 
-bookInfo = jsonFile['items'][0]['volumeInfo']
+'''bookInfo = jsonFile['items'][0]['volumeInfo']
 title = bookInfo['title']
 author = bookInfo['authors']
-publishedDate = bookInfo['publishedDate']
+publishedDate = bookInfo['publishedDate']'''
 
 print(title)
 print(author)
