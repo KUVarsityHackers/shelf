@@ -18,13 +18,14 @@ function putOnShelf() {
   let isbn = document.getElementById("isbn").value;
 
   const url = "/listing";
-  $.post(url, {
+  let response = $.post(url, {
     json_string: JSON.stringify({
       user: userID,
       email: email,
       isbn: isbn
     })
   })
+  console.log(response);
 }
 
 function searchShelf() {
@@ -41,4 +42,5 @@ function searchShelf() {
       isbn: isbn? isbn : "null"
     })
   })
+  console.log(response);
 }
