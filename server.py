@@ -1,4 +1,5 @@
 import firebase_admin
+import google
 from firebase_admin import credentials
 from firebase_admin import firestore
 from bookInfo import getBookInfo
@@ -11,11 +12,11 @@ import flask
 from flask import Flask, render_template, request, Response
 
 import json
+import requests
 
 app = Flask(__name__)
 
 #reference for books collection from firestore
-
 @app.route('/', methods=['GET', 'POST'])
 def main():
     return render_template('index.html')
@@ -28,25 +29,9 @@ def toHome():
 def toList():
     return render_template('list.html')
 
-# @app.route('/borrow.html', methods=['GET', 'POST'])
-# def toBorrow():
-#     return render_template('list.html')
-
-# @app.route('/login' , methods=['POST', 'GET'])
-# def logon():
-#     #pushes logon information to firestore
-#     s = request.form.to_dict()['json_string']
-#     json_acceptable_string = s.replace("'", "\"")
-#     d = json.loads(json_acceptable_string)
-    
-#     userID = d['userID']
-#     password = d['password']
-
-#     doc_ref = db.collection(u'users').document(userID)
-#     doc_ref.set({
-#         u'password': password
-#     })
-#     return(True)
+@app.route('/borrow.html', methods=['GET', 'POST'])
+def toBorrow():
+    return render_template('borrow.html')
 
 @app.route('/listing' , methods=['POST', 'GET'])
 def listing():
@@ -58,33 +43,36 @@ def listing():
     isbn = d['isbn']
     user = d['user']
     email = d['email']
-    #address = d['address']
-    #city = d['city']
-    #state = d['state']
+    address = d['address']
+    city = d['city']
+    state = d['state']
 
     sourApple = getBookInfo(isbn)
-
+    title =  sourApple[0]
+    publishedDate = sourApple[1]
+    
     doc_ref = db.collection(u'lenders').document(user)
     doc_ref.set({
-        u'email': email
+        u'email': email,
+        u'address': address,
+        u'state': state
     })
     
-    
-    #there is an issue when getting the address, city, and state from  the list.html file
 
+    #there is an issue when getting the address, city, and state from  the list.html file
     book_ref = db.collection(u'books').document(isbn)
     book_ref.set({
-        u'title': sourApple[0],
-        u'publishedDate': sourApple[1],
-        u'isbn': isbn
+         u'title': title,
+         u'publishedDate': publishedDate,
+         u'isbn': isbn
     })
     #this does not currently work
-    bookOwner = db.collection(u'books').document(isbn).collection("owner").document(user)
+    bookOwner = db.collection(u'books').document(isbn).collection(u'owner').document(user)
     bookOwner.set({
         u'email': email
     })
 
-    return(True)
+    return(str(True))
 
 @app.route('/search' , methods=['POST', 'GET'])
 def search():
@@ -94,12 +82,16 @@ def search():
     d = json.loads(json_acceptable_string)
     
     isbn = d['isbn']
+    # title = d['title']
+    # author = d['author']
     
-    # try:
-    #     book_ref.document(isbn).get()
-    # except google.cloud.exceptions.NotFound:
-    #     return("Nothing was found.")
-    return(True)
+    #query books document by isbn and return retrieved to frontend
+    try:
+        retrieved = db.collection(u'books').where(u'isbn', u'==', isbn).get()
+    except google.cloud.exceptions.NotFound:
+        return("Nothing was found.")
+
+    return(retrieved)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3001, debug=True)
