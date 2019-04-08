@@ -79,7 +79,10 @@ def listing():
         u'isbn': isbn
     })
     #this does not currently work
-    db.collection(u'books').document(isbn).collection(user).document(isbn)
+    bookOwner = db.collection(u'books').document(isbn).collection("owner").document(user)
+    bookOwner.set({
+        u'email': email
+    })
 
     return(True)
 
