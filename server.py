@@ -8,7 +8,7 @@ default_app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 import flask
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request, Response, send_from_directory
 
 import json
 
@@ -16,9 +16,18 @@ app = Flask(__name__)
 
 #reference for books collection from firestore
 
+
 @app.route('/', methods=['GET', 'POST'])
 def main():
     return render_template('index.html')
+
+@app.route('/docs/')
+def toDocsHome():
+    return app.send_static_file("docs/index.html")
+
+@app.route('/docs/<path:filename>')
+def toDocs(filename):
+    return app.send_static_file("docs/" + filename)
 
 @app.route('/home.html', methods=['GET', 'POST'])
 def toHome():

@@ -1,3 +1,4 @@
+/** Submit does this **/
 function onSubmit() {
 
   let userID = document.getElementById("userName").value;
@@ -11,6 +12,7 @@ function onSubmit() {
   return false;
 }
 
+/** put on shelf does this **/
 function putOnShelf() {
 
   let userID = document.getElementById("userName").value;
