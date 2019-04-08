@@ -16,19 +16,13 @@ function putOnShelf() {
   let userID = document.getElementById("userName").value;
   let email = document.getElementById("email").value;
   let isbn = document.getElementById("isbn").value;
-  let address = document.getElementById("address").value;
-  let city = document.getElementById("city").value;
-  let state = document.getElementById("state").value;
 
   const url = "/listing";
   let response = $.post(url, {
     json_string: JSON.stringify({
       user: userID,
       email: email,
-      isbn: isbn,
-      address: address,
-      city: city,
-      state: state
+      isbn: isbn
     })
   })
   console.log(response);

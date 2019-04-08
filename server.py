@@ -58,19 +58,17 @@ def listing():
     isbn = d['isbn']
     user = d['user']
     email = d['email']
-    address = d['address']
-    city = d['city']
-    state = d['state']
+    #address = d['address']
+    #city = d['city']
+    #state = d['state']
 
     sourApple = getBookInfo(isbn)
 
     doc_ref = db.collection(u'lenders').document(user)
     doc_ref.set({
-        u'email': email,
-        u'address': address,
-        u'city': city,
-        u'state': state
+        u'email': email
     })
+    
     
     #there is an issue when getting the address, city, and state from  the list.html file
 
@@ -78,10 +76,10 @@ def listing():
     book_ref.set({
         u'title': sourApple[0],
         u'publishedDate': sourApple[1],
-        u'author': sourApple[2],
         u'isbn': isbn
     })
-    
+    #this does not currently work
+    db.collection(u'books').document(isbn).collection(user).document(isbn)
 
     return(True)
 
