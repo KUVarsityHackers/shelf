@@ -17,7 +17,7 @@
         "collapse": true
     },
     "opts": {
-        "destination": "templates/docs/",
+        "destination": "static/docs/",
         "encoding": "utf8",
         "private": true,
         "recurse": true,
