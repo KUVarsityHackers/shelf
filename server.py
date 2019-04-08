@@ -32,7 +32,6 @@ def toList():
 @app.route('/borrow.html', methods=['GET', 'POST'])
 def toBorrow():
     return render_template('borrow.html')
-<<<<<<< HEAD
 
 # @app.route('/login' , methods=['POST', 'GET'])
 # def logon():
@@ -49,8 +48,6 @@ def toBorrow():
 #         u'password': password
 #     })
 #     return(True)
-=======
->>>>>>> 67ffb7a3bf3be1b5eae2032b53e48211255ab1f4
 
 @app.route('/listing' , methods=['POST', 'GET'])
 def listing():
@@ -85,13 +82,8 @@ def listing():
          u'publishedDate': publishedDate,
          u'isbn': isbn
     })
-<<<<<<< HEAD
     
     bookOwner = db.collection(u'books').document(isbn).collection("owner").document(user)
-=======
-    #this does not currently work
-    bookOwner = db.collection(u'books').document(isbn).collection(u'owner').document(user)
->>>>>>> 67ffb7a3bf3be1b5eae2032b53e48211255ab1f4
     bookOwner.set({
         u'email': email
     })
