@@ -28,9 +28,9 @@ def toHome():
 def toList():
     return render_template('list.html')
 
-# @app.route('/borrow.html', methods=['GET', 'POST'])
-# def toBorrow():
-#     return render_template('list.html')
+@app.route('/borrow.html', methods=['GET', 'POST'])
+def toBorrow():
+    return render_template('borrow.html')
 
 # @app.route('/login' , methods=['POST', 'GET'])
 # def logon():
@@ -78,7 +78,7 @@ def listing():
         u'publishedDate': sourApple[1],
         u'isbn': isbn
     })
-    #this does not currently work
+    
     bookOwner = db.collection(u'books').document(isbn).collection("owner").document(user)
     bookOwner.set({
         u'email': email
