@@ -87,12 +87,14 @@ def search():
     
     #query books document by isbn and return retrieved to frontend
     try:
-        retrieved = db.collection(u'books').document(isbn).get()
-        obj = (u'Document Data: {}').format(retrieved.to_dict())
+        obj = []
+        docs = db.collection(u'books').document(isbn).collection(u'owner').get()
+        for doc in docs:
+            obj.append(u'{} => {}'.format(doc.id, doc.to_dict()))
+        
     except google.cloud.exceptions.NotFound:
         return("Nothing was found.")
-
-    return(obj)
+    return str(obj)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3001, debug=True)
