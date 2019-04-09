@@ -33,22 +33,6 @@ def toList():
 def toBorrow():
     return render_template('borrow.html')
 
-# @app.route('/login' , methods=['POST', 'GET'])
-# def logon():
-#     #pushes logon information to firestore
-#     s = request.form.to_dict()['json_string']
-#     json_acceptable_string = s.replace("'", "\"")
-#     d = json.loads(json_acceptable_string)
-    
-#     userID = d['userID']
-#     password = d['password']
-
-#     doc_ref = db.collection(u'users').document(userID)
-#     doc_ref.set({
-#         u'password': password
-#     })
-#     return(True)
-
 @app.route('/listing' , methods=['POST', 'GET'])
 def listing():
     #pushes logon information to firestore
@@ -82,8 +66,8 @@ def listing():
          u'publishedDate': publishedDate,
          u'isbn': isbn
     })
-    
-    bookOwner = db.collection(u'books').document(isbn).collection("owner").document(user)
+    #this does not currently work
+    bookOwner = db.collection(u'books').document(isbn).collection(u'owner').document(user)
     bookOwner.set({
         u'email': email
     })
@@ -103,11 +87,12 @@ def search():
     
     #query books document by isbn and return retrieved to frontend
     try:
-        retrieved = db.collection(u'books').where(u'isbn', u'==', isbn).get()
+        retrieved = db.collection(u'books').document(isbn).get()
+        obj = (u'Document Data: {}').format(retrieved.to_dict())
     except google.cloud.exceptions.NotFound:
         return("Nothing was found.")
 
-    return(retrieved)
+    return(obj)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3001, debug=True)
