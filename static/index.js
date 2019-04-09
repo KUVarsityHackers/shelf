@@ -33,7 +33,7 @@ function searchShelf() {
   let title = document.getElementById("title").value;
   let author = document.getElementById("author").value;
   let isbn = document.getElementById("borrowISBN").value;
-
+  console.log("hello");
   const url = "/search";
   let response = $.post(url, {
     json_string: JSON.stringify({
