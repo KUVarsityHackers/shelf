@@ -85,7 +85,11 @@ This project is licensed under the MIT License
 
 # Build Process
 
-You can find the gant chart used [here](https://docs.google.com/spreadsheets/d/1LpeLnEP7ImVL90qSGQHIsktWfbXGHQE5Drwao6LR-2w/edit?usp=sharing)
+You can find the gantt chart used [here](https://docs.google.com/spreadsheets/d/1LpeLnEP7ImVL90qSGQHIsktWfbXGHQE5Drwao6LR-2w/edit?usp=sharing)
+
+You can find the Product Backlog [here](https://docs.google.com/spreadsheets/d/1T_-BsET3-Mhd6G8vbVHBQqs77u45WcXDNMd-9sdvAjQ/edit?usp=sharing)
+
+You can find the Sprint Backlog [here](https://docs.google.com/spreadsheets/d/1ktC6fxbPKud45chsLSqZ9oB99sTQhaG9CjEtAdsIe-s/edit?usp=sharing)
 
 # Meeting Documentation
 
