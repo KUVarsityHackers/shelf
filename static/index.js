@@ -32,17 +32,23 @@ function putOnShelf() {
 
 function searchShelf() {
 
-  let title = document.getElementById("title").value;
-  let author = document.getElementById("author").value;
+  // let title = document.getElementById("title").value;
+  // let author = document.getElementById("author").value;
   let isbn = document.getElementById("borrowISBN").value;
-  console.log("hello");
-  const url = "/search";
-  let response = $.post(url, {
-    json_string: JSON.stringify({
-      title: title? title : "null",
-      author: author? author : "null",
-      isbn: isbn? isbn : "null"
-    })
+  
+  const url = "/api/search";
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: {
+      json_string: JSON.stringify({
+      title: title? title : "null", 
+      author: author? author : "null", 
+      isbn: isbn? isbn : "null"})
+    },
+    success: function(response){
+      alert(response);
+    },
+    dataType: 'text'
   })
-  console.log(response);
 }
