@@ -63,15 +63,16 @@ For deployment to a live system make sure to turn flask debug mode off
 
 ## Authors
 
-* **Andre Kurat** - *Initial work* - [AndreKurait](https://github.com/AndreKurait)
+* **Andre Kurat** - *Andre
+served as scrum master, handling documentation requirements as well as code validation and testing. Andre also solved many bugs with the various backend systems used that arose. Most importantly, Andre designed the cowsay logo.* - [AndreKurait](https://github.com/AndreKurait)
 
-* **Michael Svoren** - *Initial work* - [mdsvoren](https://github.com/mdsvoren)
+* **Michael Svoren** - *Michael helped implement the Firebase for use in shelf. Additionally, he generated book info from an isbn number and was responsible for formatting the output when a user borrows. He worked to clean and beautify several html pages as well. Finally, Michael ideated the storage structure in the database.* - [mdsvoren](https://github.com/mdsvoren)
 
-* **Nathan Nichols** - *Initial work* - [natenichols](https://github.com/natenichols)
+* **Nathan Nichols** - *Nathan helped develop the front end html and css. He was instrumental in achieving the premium feel that shelf wants to achieve. Nathan also stepped in to fix back end server issues when needed, proving invaluable there.* - [natenichols](https://github.com/natenichols)
 
-* **Colin Floyd** - *Initial work* - [czfloyd](https://github.com/czfloyd)
+* **Colin Floyd** - *Colin labored on the on the front end html and css. Colin handled the posting of information to a js file and then from there to the server where python handled in. * - [czfloyd](https://github.com/czfloyd)
 
-* **Tiernon Riesenmy** - *Initial work* - [TiernonRR](https://github.com/TiernonRR)
+* **Tiernon Riesenmy** - *Tiernon masterminded the firebase implementation of firebase for the database. He wrote the abilities to read and write from the database, also overcoming major obstacles faced in getting the returned data all the way back to the JS file. Tiernon also helped make the site more robust, by adding in fail safes to bad in put or misinterpreted information by the api calls.* - [TiernonRR](https://github.com/TiernonRR)
 
 ## References/Citations
 * https://www.googleapis.com/books/v1/volumes?q=isbn:9781119259756
