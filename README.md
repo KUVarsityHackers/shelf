@@ -77,6 +77,6 @@ For deployment to a live system make sure to turn flask debug mode off
 
 This project is licensed under the MIT License
 
-## Build Process
+# Build Process
 
 You can find the gant chart used [here](https://docs.google.com/spreadsheets/d/1LpeLnEP7ImVL90qSGQHIsktWfbXGHQE5Drwao6LR-2w/edit?usp=sharing)
