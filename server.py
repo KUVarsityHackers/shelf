@@ -57,7 +57,7 @@ def listing():
         title =  sourApple[0]
         publishedDate = sourApple[1]
     except:
-        return Response(json.dumps("ISBN NOT FOUND"),  mimetype='application/json')
+        return ("Could not find match for ISBN.")
     
     doc_ref = db.collection(u'lenders').document(user)
     doc_ref.set({
@@ -80,7 +80,7 @@ def listing():
         u'email': email
     })
 
-    return Response(json.dumps("You have successfully added to your shelf!"),  mimetype='application/json')
+    return ("You have successfully added to your shelf!")
 
 @app.route('/api/search' , methods=['POST', 'GET'])
 def search():

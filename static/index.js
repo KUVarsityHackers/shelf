@@ -39,7 +39,8 @@ function putOnShelf() {
     success: function(response){
      alert(response);
     },
-    dataType: 'text'
+    dataType: 'text',
+    async: false
   })
   
 }
@@ -63,6 +64,8 @@ function searchShelf() {
     success: function(response){
       alert(response);
     },
-    dataType: 'text'
+    dataType: 'text',
+    async: false
   })
+
 }
