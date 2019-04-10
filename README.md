@@ -73,6 +73,11 @@ For deployment to a live system make sure to turn flask debug mode off
 
 * **Tiernon Riesenmy** - *Initial work* - [TiernonRR](https://github.com/TiernonRR)
 
+## References/Citations
+* https://www.googleapis.com/books/v1/volumes?q=isbn:9781119259756
+* https://www.geeksforgeeks.org/get-post-requests-using-python/
+
+
 ## License
 
 This project is licensed under the MIT License

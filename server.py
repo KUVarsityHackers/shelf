@@ -2,7 +2,6 @@ import firebase_admin
 import google
 from firebase_admin import credentials
 from firebase_admin import firestore
-from bookInfo import getBookInfo
 
 cred = credentials.Certificate('serviceKey.json')
 default_app = firebase_admin.initialize_app(cred)
@@ -15,6 +14,22 @@ import json
 import requests
 
 app = Flask(__name__)
+
+#get isbn from front end
+def getBookInfo(isbnNum):
+    isbn = str(isbnNum)
+    url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn
+    req = requests.get(url = url)
+    jsonFile = req.json()
+    bookInfo = jsonFile['items'][0]['volumeInfo']
+    title = bookInfo['title']
+    author = bookInfo['authors']
+    publishedDate = bookInfo['publishedDate']
+    banana = []
+    banana.append(title)
+    banana.append(publishedDate)
+    banana.append(author)
+    return banana
 
 @app.route('/', methods=['GET', 'POST'])
 def main():

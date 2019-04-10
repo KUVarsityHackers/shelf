@@ -62,7 +62,23 @@ function searchShelf() {
       isbn: isbn? isbn : "null"})
     },
     success: function(response){
-      alert(response);
+      //only get relevent info
+      let correctString = "CONTACT THE FOLLOWING TO BORROW YOUR BOOK:\n"
+      let initialParse = response.split("\"");
+      for (let i=0; i<initialParse.length; i++)
+      {
+        for (let j=0; j<initialParse[i].length; j++)
+        {
+          if (initialParse[i][j] == "@")
+          {
+            correctString = correctString + '\n' + initialParse[i];
+            break;
+          }
+        }
+      }
+
+
+      alert(correctString);
     },
     dataType: 'text',
     async: false
