@@ -87,6 +87,12 @@ You can find the most up to date gantt chart used [here](https://docs.google.com
 
 ![](gantt.png)
 
+## Scrum Artifacts
+
+You can find the Product Backlog [here](https://docs.google.com/spreadsheets/d/1T_-BsET3-Mhd6G8vbVHBQqs77u45WcXDNMd-9sdvAjQ/edit?usp=sharing)
+
+You can find the Sprint Backlog [here](https://docs.google.com/spreadsheets/d/1ktC6fxbPKud45chsLSqZ9oB99sTQhaG9CjEtAdsIe-s/edit?usp=sharing)
+
 ## Meeting Documentation
 
 3/26/19
@@ -123,8 +129,3 @@ Much of our communication was done through Slack throughout the weeks that we in
 
 ![](uml-class.png)
 
-## Scrum Artifacts
-
-You can find the Product Backlog [here](https://docs.google.com/spreadsheets/d/1T_-BsET3-Mhd6G8vbVHBQqs77u45WcXDNMd-9sdvAjQ/edit?usp=sharing)
-
-You can find the Sprint Backlog [here](https://docs.google.com/spreadsheets/d/1ktC6fxbPKud45chsLSqZ9oB99sTQhaG9CjEtAdsIe-s/edit?usp=sharing)
