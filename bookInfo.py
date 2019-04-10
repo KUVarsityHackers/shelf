@@ -20,5 +20,3 @@ def getBookInfo(isbnNum):
     banana.append(publishedDate)
     banana.append(author)
     return banana
-
-# getBookInfo(9781101980132)

@@ -16,9 +16,6 @@ import requests
 
 app = Flask(__name__)
 
-#reference for books collection from firestore
-
-
 @app.route('/', methods=['GET', 'POST'])
 def main():
     return render_template('index.html')
@@ -45,7 +42,6 @@ def toBorrow():
 
 @app.route('/listing' , methods=['POST', 'GET'])
 def listing():
-    #pushes logon information to firestore
     s = request.form.to_dict()['json_string']
     json_acceptable_string = s.replace("'", "\"")
     d = json.loads(json_acceptable_string)
@@ -53,36 +49,38 @@ def listing():
     isbn = d['isbn']
     user = d['user']
     email = d['email']
-    address = d['address']
-    city = d['city']
-    state = d['state']
-
-    sourApple = getBookInfo(isbn)
-    title =  sourApple[0]
-    publishedDate = sourApple[1]
+    #address = d['address']
+    # city = d['city']
+    # state = d['state']
+    try:
+        sourApple = getBookInfo(isbn)
+        title =  sourApple[0]
+        publishedDate = sourApple[1]
+    except:
+        return Response(json.dumps("ISBN NOT FOUND"),  mimetype='application/json')
     
     doc_ref = db.collection(u'lenders').document(user)
     doc_ref.set({
         u'email': email,
-        u'address': address,
-        u'state': state
+        # u'address': address,
+        # u'state': state
     })
     
 
-    #there is an issue when getting the address, city, and state from  the list.html file
+    #set book info for document in the collection
     book_ref = db.collection(u'books').document(isbn)
     book_ref.set({
          u'title': title,
          u'publishedDate': publishedDate,
          u'isbn': isbn
     })
-    #this does not currently work
+    #add user to owner collection of book
     bookOwner = db.collection(u'books').document(isbn).collection(u'owner').document(user)
     bookOwner.set({
         u'email': email
     })
 
-    return(str(True))
+    return Response(json.dumps("You have successfully added to your shelf!"),  mimetype='application/json')
 
 @app.route('/api/search' , methods=['POST', 'GET'])
 def search():
