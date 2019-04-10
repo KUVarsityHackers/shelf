@@ -86,3 +86,25 @@ This project is licensed under the MIT License
 # Build Process
 
 You can find the gant chart used [here](https://docs.google.com/spreadsheets/d/1LpeLnEP7ImVL90qSGQHIsktWfbXGHQE5Drwao6LR-2w/edit?usp=sharing)
+
+# Meeting Documentation
+
+3/26/19
+Meeting Attendees: All
+Location: Spahr Library
+Objective: Solidify project purpose and divide tasks
+Conclusion: Reached shelf idea and mission, divided tasks among 5 team members
+
+4/2/19
+Meeting Attendees: All
+Location: Spahr Library
+Objective: Figure out interaction between front and back end
+Conclusion: Determined json structure and clarified utilization of http. Finished front end template.
+
+4/9/19
+Meeting Attendees: All (at various times)
+Location: Google Hangouts
+Objective: Finish MVP
+Conclusion: Finished MVP, overcame bugs revolving around the server in development mode as well as bizzare returned objects from firestore. Figured out how to interpret returned documents and display to user.
+
+Much of our communication was done through Slack throughout the weeks that we invested ourselves on this project.
