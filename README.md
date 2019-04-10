@@ -74,20 +74,20 @@ served as scrum master, handling documentation requirements as well as code vali
 
 * **Tiernon Riesenmy** - *Tiernon masterminded the firebase implementation of firebase for the database. He wrote the abilities to read and write from the database, also overcoming major obstacles faced in getting the returned data all the way back to the JS file. Tiernon also helped make the site more robust, by adding in fail safes to bad in put or misinterpreted information by the api calls.* - [TiernonRR](https://github.com/TiernonRR)
 
-## References/Citations
-* https://www.googleapis.com/books/v1/volumes?q=isbn:9781119259756
-* https://www.geeksforgeeks.org/get-post-requests-using-python/
-
-
 ## License
 
 This project is licensed under the MIT License
 
 # Build Process
 
-You can find the gant chart used [here](https://docs.google.com/spreadsheets/d/1LpeLnEP7ImVL90qSGQHIsktWfbXGHQE5Drwao6LR-2w/edit?usp=sharing)
 
-# Meeting Documentation
+## Gantt Chart
+
+You can find the most up to date gantt chart used [here](https://docs.google.com/spreadsheets/d/1LpeLnEP7ImVL90qSGQHIsktWfbXGHQE5Drwao6LR-2w/edit?usp=sharing)
+
+![](gantt.png)
+
+## Meeting Documentation
 
 3/26/19
 Meeting Attendees: All
@@ -108,3 +108,21 @@ Objective: Finish MVP
 Conclusion: Finished MVP, overcame bugs revolving around the server in development mode as well as bizzare returned objects from firestore. Figured out how to interpret returned documents and display to user.
 
 Much of our communication was done through Slack throughout the weeks that we invested ourselves on this project.
+
+## UML
+
+### State Diagram
+
+![](uml-State.png)
+
+### Use Case Diagram
+
+![](uml-useCase.png)
+
+### Class Diagram
+
+![](uml-class.png)
+
+## Scrum Artifacts
+
+You can find the most up to date scrum artifacts [here]()

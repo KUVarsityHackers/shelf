@@ -1,4 +1,4 @@
-/** Submit does this **/
+/** OnSubmit calls the login api with the username and passowrd to verify a user's credentials **/
 function onSubmit() {
 
   let userID = document.getElementById("userName").value;
@@ -12,7 +12,7 @@ function onSubmit() {
   return false;
 }
 
-/** put on shelf does this **/
+/** putOnShelf takes in a user's id and isbn and lists it in the firebase database **/
 function putOnShelf() {
 
   let userID = document.getElementById("userName").value;
@@ -45,6 +45,7 @@ function putOnShelf() {
   
 }
 
+/** searchShelf takes in an isbn to search for and alerts the user of the various email addresses that they can contact to borrow the book **/
 function searchShelf() {
 
   // let title = document.getElementById("title").value;
@@ -76,8 +77,6 @@ function searchShelf() {
           }
         }
       }
-
-
       alert(correctString);
     },
     dataType: 'text',
