@@ -9,7 +9,7 @@ default_app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 import flask
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request, Response, jsonify
 
 import json
 import requests
@@ -74,7 +74,7 @@ def listing():
 
     return(str(True))
 
-@app.route('/search' , methods=['POST', 'GET'])
+@app.route('/api/search' , methods=['POST', 'GET'])
 def search():
     #pushes logon information to firestore
     s = request.form.to_dict()['json_string']
@@ -90,11 +90,12 @@ def search():
         obj = []
         docs = db.collection(u'books').document(isbn).collection(u'owner').get()
         for doc in docs:
-            obj.append(u'{} => {}'.format(doc.id, doc.to_dict()))
+            obj.append(doc.to_dict())
         
     except google.cloud.exceptions.NotFound:
         return("Nothing was found.")
-    return str(obj)
+    
+    return Response(json.dumps(obj),  mimetype='application/json')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3001, debug=True)
