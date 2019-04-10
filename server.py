@@ -2,7 +2,7 @@ import firebase_admin
 import google
 from firebase_admin import credentials
 from firebase_admin import firestore
-from bookInfo import getBookInfo
+#from bookInfo import getBookInfo
 
 cred = credentials.Certificate('serviceKey.json')
 default_app = firebase_admin.initialize_app(cred)
