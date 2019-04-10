@@ -17,7 +17,7 @@
 </head>
 <!-- <body onunload="saveData()"> -->
 
-<body onunload="saveData()">
+<body>
     <!-- Banner -->
     <section id="banner">
         <h2>borrow a book</h2>
@@ -30,22 +30,23 @@
         <h3>
             Borrowing Form
         </h3>
-        <form onsubmit="SearchShelf()">
-            <label>
+        <form onsubmit="searchShelf()">
+           <label style="display: none;">
                 Book Title
             </label>
-            <input type="text" id="title">
-            <br/>
-            <label>
+         <input type="text" id="title" style="display: none;">
+            
+            <label style="display: none;">
                 Book Author
             </label>
-            <input type="text" id="author">
+            <input type="text" id="author" style="display: none;">
             <br/>
-            <label>
+            <label >
                 Book ISBN
             </label>
             <input type="text" id=borrowISBN>
-            <br/>
+            <br>
+
             <input type="submit" value="check the shelf">
         </form>
     </section>
