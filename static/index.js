@@ -58,6 +58,7 @@ let longitude = 0;
   // let title = document.getElementById("title").value;
   // let author = document.getElementById("author").value;
   let isbn = document.getElementById("borrowISBN").value;
+  let searchRadius = document.getElementById("radius").value;
   let message;
   const url = "/api/search";
   $.ajax({
@@ -68,6 +69,7 @@ let longitude = 0;
       title: title? title : "null", 
       author: author? author : "null", 
       isbn: isbn? isbn : "null",
+      radius: searchRadius,
       latitude: latitude,
       longitude: longitude
       })
