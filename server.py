@@ -107,6 +107,8 @@ def search():
     isbn = d['isbn']
     # title = d['title']
     # author = d['author']
+    latitude = d['latitude']
+    longitude = d['longitude']
     
     #query books document by isbn and return retrieved to frontend
     try:
