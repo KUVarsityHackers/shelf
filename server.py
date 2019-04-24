@@ -110,13 +110,26 @@ def search():
     latitude = d['latitude']
     longitude = d['longitude']
     searchRadius = d['radius']
-    
+    searchBy = d['searchBy']
     #query books document by isbn and return retrieved to frontend
     try:
         obj = []
-        docs = db.collection(u'books').document(isbn).collection(u'owner').get()
-        for doc in docs:
-            obj.append(doc.to_dict())
+        if(searchBy == "Title"):
+            listingArr = []
+            documents = []
+            query= db.collection(u'books').where(u'title',u'==',u'Utopía - Espanol')
+            isbnFromTitle = query.get()
+            for listing in isbnFromTitle:
+                listingArr.append(listing.id)
+            for ISBN in listingArr:
+                documents.append(db.collection(u'books').document(ISBN).collection(u'owner').get())
+                for docs in documents:
+                    for doc in docs:
+                        obj.append(doc.to_dict())
+        else:
+            docs = db.collection(u'books').document(isbn).collection(u'owner').get()
+            for doc in docs:
+                obj.append(doc.to_dict())
         
     except google.cloud.exceptions.NotFound:
         return("Nothing was found.")
