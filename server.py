@@ -64,9 +64,9 @@ def listing():
     isbn = d['isbn']
     user = d['user']
     email = d['email']
-    #address = d['address']
-    # city = d['city']
-    # state = d['state']
+    latitude = d['lat']
+    longitude = d['lon']
+    
     try:
         sourApple = getBookInfo(isbn)
         title =  sourApple[0]
@@ -77,8 +77,8 @@ def listing():
     doc_ref = db.collection(u'lenders').document(user)
     doc_ref.set({
         u'email': email,
-        # u'address': address,
-        # u'state': state
+        u'latitude': latitude,
+        u'longitude': longitude
     })
     
 
@@ -92,7 +92,9 @@ def listing():
     #add user to owner collection of book
     bookOwner = db.collection(u'books').document(isbn).collection(u'owner').document(user)
     bookOwner.set({
-        u'email': email
+        u'email': email,
+        u'latitude': latitude,
+        u'longitude': longitude
     })
 
     return ("You have successfully added to your shelf!")
