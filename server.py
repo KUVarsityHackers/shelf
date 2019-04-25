@@ -2,6 +2,7 @@ import firebase_admin
 import google
 from firebase_admin import credentials
 from firebase_admin import firestore
+from math import sin, cos, sqrt, atan2, radians
 
 cred = credentials.Certificate('serviceKey.json')
 default_app = firebase_admin.initialize_app(cred)
@@ -111,7 +112,8 @@ def search():
     latitude = d['latitude']
     longitude = d['longitude']
     searchRadius = d['radius']
-    searchBy = d['searchBy']
+    #searchBy = d['searchBy']
+    searchBy = "Not Title"
     #query books document by isbn and return retrieved to frontend
     try:
         obj = []
@@ -135,7 +137,34 @@ def search():
     except google.cloud.exceptions.NotFound:
         return("Nothing was found.")
     
-    return Response(json.dumps(obj),  mimetype='application/json')
+    #only return responses within user specified search radius
+    newObj = []
+    for person in obj:
+        #calculate distance
+        latFound = person["latitude"]
+        lonFound = person["longitude"]
+        
+        #adapted from https://stackoverflow.com/questions/19412462/getting-distance-between-two-points-based-on-latitude-longitude
+        #approximate radius of earth in km
+        R = 6373.0
+        lat1 = radians(latFound)
+        lon1 = radians(lonFound)
+        lat2 = radians(52.406374)
+        lon2 = radians(16.9251681)
+        dlon = lon2 - lon1
+        dlat = lat2 - lat1
+        a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+        c = 2 * atan2(sqrt(a), sqrt(1 - a))
+        distance = R * c
+        if (distance < searchRadius):
+            temp = []
+            temp.append(person["email"])
+            temp.append(distance)
+            newObj.append(temp)
+
+
+
+    return Response(json.dumps(newObj),  mimetype='application/json')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3001, debug=True)
