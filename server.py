@@ -107,8 +107,7 @@ def search():
     d = json.loads(json_acceptable_string)
     
     isbn = d['isbn']
-    # title = d['title']
-    # author = d['author']
+    title = d['title']
     latitude = d['latitude']
     longitude = d['longitude']
     searchRadius = d['radius']
@@ -119,7 +118,7 @@ def search():
         if(searchBy == "Title"):
             listingArr = []
             owners = []
-            query= db.collection(u'books').where(u'title',u'==',u'Utopía - Espanol')
+            query= db.collection(u'books').where(u'title',u'==',title)
             isbnFromTitle = query.get()
             for listing in isbnFromTitle:
                 listingArr.append(listing.id)
