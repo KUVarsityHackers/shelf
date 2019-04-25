@@ -118,14 +118,14 @@ def search():
         obj = []
         if(searchBy == "Title"):
             listingArr = []
-            documents = []
+            owners = []
             query= db.collection(u'books').where(u'title',u'==',u'Utopía - Espanol')
             isbnFromTitle = query.get()
             for listing in isbnFromTitle:
                 listingArr.append(listing.id)
             for ISBN in listingArr:
-                documents.append(db.collection(u'books').document(ISBN).collection(u'owner').get())
-                for docs in documents:
+                owners.append(db.collection(u'books').document(ISBN).collection(u'owner').get())
+                for docs in owners:
                     for doc in docs:
                         obj.append(doc.to_dict())
         else:
