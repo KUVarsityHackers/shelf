@@ -19,6 +19,20 @@ function putOnShelf() {
   let email = document.getElementById("email").value;
   let isbn = document.getElementById("isbn").value;
 
+  //get geolocation
+  /*let latitude = navigator.geolocation.getCurrentPosition(function(position) {
+    return position.coords.latitude;
+  });
+
+  let longitude = navigator.geolocation.getCurrentPosition(function(position) {
+    return position.coords.longitude;
+  });*/
+
+  let latitude = 34;
+  let longitude = 54;
+
+
+
   const url = "/listing";
   // let response = $.post(url, {
   //   json_string: JSON.stringify({
@@ -27,6 +41,8 @@ function putOnShelf() {
   //     isbn: isbn
   //   })
   // })
+
+  //need to make this happen after the first
   $.ajax({
     type: "POST",
     url: url,
@@ -34,7 +50,10 @@ function putOnShelf() {
       json_string: JSON.stringify({
        user: userID,
        email: email,
-       isbn: isbn})
+       isbn: isbn,
+       lat: latitude,
+       lon: longitude
+      })
     },
     success: function(response){
      alert(response);
@@ -47,12 +66,12 @@ function putOnShelf() {
 
 /** searchShelf takes in an isbn to search for and alerts the user of the various email addresses that they can contact to borrow the book **/
 function searchShelf() {
-let latitude = 0;
-let longitude = 0;
-  //get geolocation
-  navigator.geolocation.getCurrentPosition(function(position) {
-    latitude = position.coords.latitude
-    longitude = position.coords.longitude;
+  let latitude = navigator.geolocation.getCurrentPosition(function(position) {
+    return position.coords.latitude;
+  });
+
+  let longitude = navigator.geolocation.getCurrentPosition(function(position) {
+    return position.coords.longitude;
   });
 
   // let title = document.getElementById("title").value;
@@ -91,7 +110,7 @@ let longitude = 0;
           }
         }
       }
-      alert(correctString);
+      alert(initialParse);
     },
     dataType: 'text',
     async: false

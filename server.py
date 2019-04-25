@@ -111,7 +111,7 @@ def search():
     title = d['title']
     latitude = d['latitude']
     longitude = d['longitude']
-    searchRadius = d['radius']
+    searchRadius = float(d['radius'])
     #searchBy = d['searchBy']
     searchBy = "Not Title"
     #query books document by isbn and return retrieved to frontend
@@ -149,8 +149,8 @@ def search():
         R = 6373.0
         lat1 = radians(latFound)
         lon1 = radians(lonFound)
-        lat2 = radians(52.406374)
-        lon2 = radians(16.9251681)
+        lat2 = radians(latitude)
+        lon2 = radians(longitude)
         dlon = lon2 - lon1
         dlat = lat2 - lat1
         a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
