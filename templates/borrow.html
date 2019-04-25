@@ -22,7 +22,7 @@
     <section id="banner">
         <h2>borrow a book</h2>
         <p>
-            search by isbn
+            search by isbn or title
         </p>
     </section>
     <!-- Form -->
@@ -30,24 +30,27 @@
         <h3>
             Borrowing Form
         </h3>
+        <h4>Search By:</h4>
+        <input type="button" id="Title" value="Title" onclick = "titleSearch()"></input>
+        <input type="button" id="ISBN"  value="ISBN"  onclick = "isbnSearch()" ></input>
         <form onsubmit="searchShelf()">
-           <label style="display: none;">
+           <label id = "bkLabel" style="display: none;">
                 Book Title
             </label>
          <input type="text" id="title" style="display: none;">
             
-            <label style="display: none;">
+            <!-- <label style="display: none;">
                 Book Author
             </label>
             <input type="text" id="author" style="display: none;">
-            <br/>
-            <label >
+            <br/> -->
+            <label id = "isbnLabel" style="display: none;">
                 Book ISBN
             </label>
-            <input type="text" id=borrowISBN>
+            <input type="text" id="borrowISBN" style="display: none;">
             <br>
 
-            Search Radius (miles): <input type="number" id="radius" value="5"><br>
+            Search Radius (km): <input type="number" id="radius" value="5"><br>
 
             <input type="submit" value="check the shelf">
         </form>

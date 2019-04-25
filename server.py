@@ -112,9 +112,7 @@ def search():
     latitude = d['latitude']
     longitude = d['longitude']
     searchRadius = d['radius']
-    #searchBy = d['searchBy']
-    searchBy = "Not Title"
-    #query books document by isbn and return retrieved to frontend
+    searchBy = d['searchBy']
     try:
         obj = []
         if(searchBy == "Title"):
