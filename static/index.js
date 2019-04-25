@@ -1,3 +1,4 @@
+/** functions that affect the html page in response to user choice, and sets global variable **/
 let searchBy;
 function titleSearch(){
     let titleLabel = document.getElementById("bkLabel");
@@ -22,6 +23,7 @@ function isbnSearch(){
   isbnField.style.display  = "block";
   searchBy = "ISBN";
 }
+
 /** OnSubmit calls the login api with the username and passowrd to verify a user's credentials **/
 function onSubmit() {
 
