@@ -93,16 +93,13 @@ function searchShelf() {
     url: url,
     data: {
       json_string: JSON.stringify({
-      title: title? title : "null", 
-      author: author? author : "null", 
-      isbn: isbn? isbn : "null",
-      radius: searchRadius,
-      latitude: latitude,
-      longitude: longitude,
-      searchBy: searchBy
+        title: title? title : "null", 
+        isbn: isbn? isbn : "null",
+        radius: searchRadius? searchRadius : "null",
+        latitude: latitude? latitude : "null",
+        longitude: longitude? latitude : "null",
+        searchBy: searchBy? searchBy : "null"
       })
-
-
     },
     success: function (response) {
       //only get relevent info
