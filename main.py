@@ -6,6 +6,7 @@ import firebase_admin
 import google
 from firebase_admin import credentials
 from firebase_admin import firestore
+from math import sin, cos, sqrt, atan2, radians
 
 cred = credentials.Certificate('serviceKey.json')
 default_app = firebase_admin.initialize_app(cred)
@@ -78,8 +79,8 @@ def listing():
     isbn = d['isbn']
     user = d['user']
     email = d['email']
-    latitude = d['lat']
-    longitude = d['lon']
+    # latitude = d['lat']
+    # longitude = d['lon']
     
     try:
         sourApple = getBookInfo(isbn)
@@ -91,8 +92,8 @@ def listing():
     doc_ref = db.collection(u'lenders').document(user)
     doc_ref.set({
         u'email': email,
-        u'latitude': latitude,
-        u'longitude': longitude
+        # u'latitude': latitude,
+        # u'longitude': longitude
     })
     
 
@@ -121,25 +122,24 @@ def search():
     d = json.loads(json_acceptable_string)
     
     isbn = d['isbn']
-    # title = d['title']
-    # author = d['author']
+    title = d['title']
     latitude = d['latitude']
     longitude = d['longitude']
     searchRadius = d['radius']
     searchBy = d['searchBy']
-    #query books document by isbn and return retrieved to frontend
+    print(searchBy)
     try:
         obj = []
         if(searchBy == "Title"):
             listingArr = []
-            documents = []
-            query= db.collection(u'books').where(u'title',u'==',u'Utopía - Espanol')
+            owners = []
+            query= db.collection(u'books').where(u'title',u'==',title)
             isbnFromTitle = query.get()
             for listing in isbnFromTitle:
                 listingArr.append(listing.id)
             for ISBN in listingArr:
-                documents.append(db.collection(u'books').document(ISBN).collection(u'owner').get())
-                for docs in documents:
+                owners.append(db.collection(u'books').document(ISBN).collection(u'owner').get())
+                for docs in owners:
                     for doc in docs:
                         obj.append(doc.to_dict())
         else:
@@ -150,6 +150,33 @@ def search():
     except google.cloud.exceptions.NotFound:
         return("Nothing was found.")
     
+    #only return responses within user specified search radius
+    # newObj = []
+    # for person in obj:
+    #     #calculate distance
+    #     latFound = person["latitude"]
+    #     lonFound = person["longitude"]
+        
+    #     #adapted from https://stackoverflow.com/questions/19412462/getting-distance-between-two-points-based-on-latitude-longitude
+    #     #approximate radius of earth in km
+    #     R = 6373.0
+    #     lat1 = radians(latFound)
+    #     lon1 = radians(lonFound)
+    #     lat2 = radians(52.406374)
+    #     lon2 = radians(16.9251681)
+    #     dlon = lon2 - lon1
+    #     dlat = lat2 - lat1
+    #     a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+    #     c = 2 * atan2(sqrt(a), sqrt(1 - a))
+    #     distance = R * c
+    #     if (distance < float(searchRadius)):
+    #         temp = []
+    #         temp.append(person["email"])
+    #         temp.append(distance)
+    #         newObj.append(temp)
+
+
+
     return Response(json.dumps(obj),  mimetype='application/json')
 
 if __name__ == '__main__':
