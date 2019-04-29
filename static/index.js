@@ -64,7 +64,8 @@ function putOnShelf() {
     if(latitude < 99999 && longitude < 99999) { 
       resolve(); 
     } else { 
-      reject(); 
+      resolve();
+      //reject
     } 
   });
 
