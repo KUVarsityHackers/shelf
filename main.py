@@ -79,8 +79,8 @@ def listing():
     isbn = d['isbn']
     user = d['user']
     email = d['email']
-    # latitude = d['lat']
-    # longitude = d['lon']
+    latitude = d['lat']
+    longitude = d['lon']
     
     try:
         sourApple = getBookInfo(isbn)
@@ -92,8 +92,8 @@ def listing():
     doc_ref = db.collection(u'lenders').document(user)
     doc_ref.set({
         u'email': email,
-        # u'latitude': latitude,
-        # u'longitude': longitude
+        u'latitude': latitude,
+        u'longitude': longitude
     })
     
 
@@ -125,7 +125,8 @@ def search():
     title = d['title']
     latitude = d['latitude']
     longitude = d['longitude']
-    searchRadius = d['radius']
+    searchRadius = (d['radius'])
+
     searchBy = d['searchBy']
     print(searchBy)
     try:
@@ -151,33 +152,30 @@ def search():
         return("Nothing was found.")
     
     #only return responses within user specified search radius
-    # newObj = []
-    # for person in obj:
-    #     #calculate distance
-    #     latFound = person["latitude"]
-    #     lonFound = person["longitude"]
-        
-    #     #adapted from https://stackoverflow.com/questions/19412462/getting-distance-between-two-points-based-on-latitude-longitude
-    #     #approximate radius of earth in km
-    #     R = 6373.0
-    #     lat1 = radians(latFound)
-    #     lon1 = radians(lonFound)
-    #     lat2 = radians(52.406374)
-    #     lon2 = radians(16.9251681)
-    #     dlon = lon2 - lon1
-    #     dlat = lat2 - lat1
-    #     a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
-    #     c = 2 * atan2(sqrt(a), sqrt(1 - a))
-    #     distance = R * c
-    #     if (distance < float(searchRadius)):
-    #         temp = []
-    #         temp.append(person["email"])
-    #         temp.append(distance)
-    #         newObj.append(temp)
+    newObj = []
+    for person in obj:
+        #calculate distance
+        latFound = person["latitude"]
+        lonFound = person["longitude"]
+                #adapted from https://stackoverflow.com/questions/19412462/getting-distance-between-two-points-based-on-latitude-longitude
+        #approximate radius of earth in km
+        R = 6373.0
+        lat1 = radians(latFound)
+        lon1 = radians(lonFound)
+        lat2 = radians(latitude)
+        lon2 = radians(longitude)
+        dlon = lon2 - lon1
+        dlat = lat2 - lat1
+        a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+        c = 2 * atan2(sqrt(a), sqrt(1 - a))
+        distance = R * c
+        if (distance < float(searchRadius)):
+            temp = []
+            temp.append(person["email"])
+            temp.append(distance)
+            newObj.append(temp)
 
-
-
-    return Response(json.dumps(obj),  mimetype='application/json')
+    return Response(json.dumps(newObj),  mimetype='application/json')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
