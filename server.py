@@ -65,8 +65,8 @@ def listing():
     isbn = d['isbn']
     user = d['user']
     email = d['email']
-    # latitude = d['lat']
-    # longitude = d['lon']
+    latitude = d['lat']
+    longitude = d['lon']
     
     try:
         sourApple = getBookInfo(isbn)
@@ -78,8 +78,8 @@ def listing():
     doc_ref = db.collection(u'lenders').document(user)
     doc_ref.set({
         u'email': email,
-        # u'latitude': latitude,
-        # u'longitude': longitude
+        u'latitude': latitude,
+        u'longitude': longitude
     })
     
 
@@ -94,8 +94,8 @@ def listing():
     bookOwner = db.collection(u'books').document(isbn).collection(u'owner').document(user)
     bookOwner.set({
         u'email': email,
-        #u'latitude': latitude,
-        #u'longitude': longitude
+        u'latitude': latitude,
+        u'longitude': longitude
     })
 
     return ("You have successfully added to your shelf!")
