@@ -64,6 +64,9 @@ function putOnShelf() {
     if(latitude < 99999 && longitude < 99999) { 
       resolve(); 
     } else { 
+      //set default values
+      latitude = 38.957
+      longitude = -95.255
       resolve();
       //reject
     } 
@@ -115,6 +118,12 @@ function searchShelf() {
   let longitude = navigator.geolocation.getCurrentPosition(function(position) {
     return position.coords.longitude;
   });
+
+  if (longitude >= 99999 || latitude >= 99999)
+  {
+    latitude = 38.957
+    longitude = -95.255
+  }
   
 
   let title = document.getElementById("title").value;
