@@ -88,8 +88,8 @@ function putOnShelf() {
        user: userID,
        email: email,
        isbn: isbn,
-       lat: latitude,
-       lon: longitude
+       lat: latitude? latitude: 38.957,
+       lon: longitude? longitude: -95.255
       })
     },
     success: function (response) {
@@ -114,6 +114,7 @@ function searchShelf() {
   let longitude = navigator.geolocation.getCurrentPosition(function(position) {
     return position.coords.longitude;
   });
+  
 
   let title = document.getElementById("title").value;
   // let author = document.getElementById("author").value;
