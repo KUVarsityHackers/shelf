@@ -45,8 +45,8 @@ function putOnShelf() {
   let email = document.getElementById("email").value;
   let isbn = document.getElementById("isbn").value;
 
-  let latitude = 99999;
-  let longitude = 99999;
+  let latitude = null;
+  let longitude = null;
 
   let promise = new Promise(function(resolve, reject) { 
     
@@ -60,12 +60,7 @@ function putOnShelf() {
     });
 
     console.log("Latitude is " + latitude + " - Longitude is " + longitude);
-
-    if(latitude < 99999 && longitude < 99999) { 
-      resolve(); 
-    } else { 
-      reject(); 
-    } 
+    resolve();
   });
 
 
@@ -79,7 +74,17 @@ function putOnShelf() {
   // })
 
   //need to make this happen after the first
-  promise.then(function () {
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  function waitforGeo() {
+  if (!("geolocation" in navigator)) {
+    await sleep(500);
+  }}
+  
+  waitforGeo().then(promise)
+  .then(function () {
   $.ajax({
     type: "POST",
     url: url,
@@ -88,8 +93,8 @@ function putOnShelf() {
        user: userID,
        email: email,
        isbn: isbn,
-       lat: latitude,
-       lon: longitude
+       lat: latitude? latitude: 38.957,
+       lon: longitude? longitude: -95.255
       })
     },
     success: function (response) {
@@ -114,6 +119,14 @@ function searchShelf() {
   let longitude = navigator.geolocation.getCurrentPosition(function(position) {
     return position.coords.longitude;
   });
+
+  //set defaults
+  if (longitude == null || latitude == null)
+  {
+    latitude = 38.957
+    longitude = -95.255
+  }
+  
 
   let title = document.getElementById("title").value;
   // let author = document.getElementById("author").value;
