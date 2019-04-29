@@ -1,2 +1,4 @@
 firebase_admin
-flask
+Flask
+requests
+gunicorn
