@@ -1,3 +1,7 @@
+
+# [START gae_flex_quickstart]
+import logging
+
 import firebase_admin
 import google
 from firebase_admin import credentials
@@ -37,6 +41,16 @@ def main():
     return render_template('home.html')
     #return render_template('index.html')
 
+
+@app.errorhandler(500)
+def server_error(e):
+    logging.exception('An error occurred during a request.')
+    return """
+    An internal error occurred: <pre>{}</pre>
+    See logs for full stacktrace.
+    """.format(e), 500
+
+
 @app.route('/docs/')
 def toDocsHome():
     return app.send_static_file("docs/index.html")
@@ -56,6 +70,10 @@ def toList():
 @app.route('/borrow.html', methods=['GET', 'POST'])
 def toBorrow():
     return render_template('borrow.html')
+
+@app.route('/barcode.html', methods=['GET', 'POST'])
+def toBarcode():
+    return render_template('barcode.html')
 
 @app.route('/listing' , methods=['POST', 'GET'])
 def listing():
@@ -165,4 +183,5 @@ def search():
     return Response(json.dumps(newObj),  mimetype='application/json')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3001, debug=True)
+    app.run(host='127.0.0.1', port=8080, debug=True)
+# [END gae_flex_quickstart]
