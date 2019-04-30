@@ -47,6 +47,21 @@ function putOnShelf() {
   let email = document.getElementById("email").value;
   let isbn = document.getElementById("isbn").value;
 
+  if (userID.length == 0)
+  {
+    alert("You must insert a username.");
+    return;
+  }
+  else if (email == "")
+  {
+    alert("You must insert an email.");
+    return;
+  }
+  else if (isbn == "")
+  {
+    alert("You must insert an isbn number.");
+    return;
+  }
 
   const url = "/listing";
 
@@ -84,6 +99,11 @@ function searchShelf() {
   // let author = document.getElementById("author").value;
   let isbn = document.getElementById("borrowISBN").value;
   let searchRadius = document.getElementById("radius").value;
+  if (searchRadius <= 0)
+  {
+    alert("Search Radius must be greater than 0");
+    return;
+  }
   let message;
   const url = "/api/search";
   $.ajax({
@@ -133,7 +153,14 @@ function searchShelf() {
       {
         finalString = finalString + parsed[i] + "\n"
       }
-      alert(finalString);
+      if (parsed.length == 0)
+      {
+        alert("Sorry: Match not found. Please Try another book.")
+      }
+      else
+      {
+        alert(finalString);
+      }
     },
     dataType: 'text',
     async: false
