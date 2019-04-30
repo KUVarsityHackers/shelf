@@ -17,6 +17,7 @@ from flask import Flask, render_template, request, Response, jsonify
 
 import json
 import requests
+import random
 
 app = Flask(__name__)
 
@@ -85,6 +86,8 @@ def listing():
     email = d['email']
     latitude = d['lat']
     longitude = d['lon']
+
+    randomID = str(random.randint(1,1000000))
     
     try:
         sourApple = getBookInfo(isbn)
@@ -93,14 +96,6 @@ def listing():
     except:
         return ("Could not find match for ISBN.")
     
-    doc_ref = db.collection(u'lenders').document(user)
-    doc_ref.set({
-        u'email': email,
-        u'latitude': latitude,
-        u'longitude': longitude
-    })
-    
-
     #set book info for document in the collection
     book_ref = db.collection(u'books').document(isbn)
     book_ref.set({
@@ -109,9 +104,10 @@ def listing():
          u'isbn': isbn
     })
     #add user to owner collection of book
-    bookOwner = db.collection(u'books').document(isbn).collection(u'owner').document(user)
+    bookOwner = db.collection(u'books').document(isbn).collection(u'owner').document(randomID)
     bookOwner.set({
         u'email': email,
+        u'username': user,
         u'latitude': latitude,
         u'longitude': longitude
     })
