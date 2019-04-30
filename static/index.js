@@ -86,7 +86,6 @@ function putOnShelf() {
 /** searchShelf takes in an isbn to search for and alerts the user of the various email addresses that they can contact to borrow the book **/
 function searchShelf() {
   
-
   let title = document.getElementById("title").value;
   // let author = document.getElementById("author").value;
   let isbn = document.getElementById("borrowISBN").value;
@@ -107,18 +106,40 @@ function searchShelf() {
       })
     },
     success: function (response) {
-      //only get relevent info
-      let correctString = "CONTACT THE FOLLOWING TO BORROW YOUR BOOK:\n"
       let initialParse = response.split("\"");
-      /*for (let i = 0; i < initialParse.length; i++) {
-        for (let j = 0; j < initialParse[i].length; j++) {
-          if (initialParse[i][j] == "@") {
-            correctString = correctString + '\n' + initialParse[i];
-            break;
-          }
+
+      let parsed = [];
+      let item = "";
+      for (let i = 0; i<initialParse.length; i++)
+      {
+        if (i%2 == 1)
+        {
+          item = "Email: ";
+          item = item + initialParse[i];
         }
-      }*/
-      alert(initialParse);
+        else if (i>1)
+        {
+          smallParse = "";
+          for (let j = 0; j< initialParse[i].length; j++)
+          {
+            if (j>1 && j < 8 && (!isNaN(initialParse[i][j]) || initialParse[i][j] == '.'))
+            {
+              smallParse = smallParse + initialParse[i][j];
+            }
+          }
+
+          item = item + " - Distance: " + smallParse + " km";
+          parsed.push(item);
+        }
+
+      }
+
+      finalString = "CONTACT THE FOLLOWING TO BORROW YOUR BOOK:\n\n"
+      for (let i = 0; i < parsed.length; i++)
+      {
+        finalString = finalString + parsed[i] + "\n"
+      }
+      alert(finalString);
     },
     dataType: 'text',
     async: false
