@@ -91,7 +91,7 @@ def listing():
     
     try:
         sourApple = getBookInfo(isbn)
-        title =  (sourApple[0]).lower()
+        title =  (sourApple[0]).lower().replace("'","/")
         publishedDate = sourApple[1]
     except:
         return ("Could not find match for ISBN.")

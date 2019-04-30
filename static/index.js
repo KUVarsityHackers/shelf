@@ -49,13 +49,7 @@ function putOnShelf() {
 
 
   const url = "/listing";
-  // let response = $.post(url, {
-  //   json_string: JSON.stringify({
-  //     user: userID,
-  //     email: email,
-  //     isbn: isbn
-  //   })
-  // })
+
 
   //need to make this happen after the first
 
@@ -86,7 +80,7 @@ function putOnShelf() {
 /** searchShelf takes in an isbn to search for and alerts the user of the various email addresses that they can contact to borrow the book **/
 function searchShelf() {
   
-  let title = document.getElementById("title").value;
+  let title = document.getElementById("title").value.replace("'","/");
   // let author = document.getElementById("author").value;
   let isbn = document.getElementById("borrowISBN").value;
   let searchRadius = document.getElementById("radius").value;
