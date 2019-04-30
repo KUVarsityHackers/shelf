@@ -68,7 +68,7 @@ function putOnShelf() {
        user: userID,
        email: email,
        isbn: isbn,
-       lat: latitude? latitude: 0,//38.957,
+       lat: latitude? latitude: 38.957,
        lon: longitude? longitude: -95.255
       })
     },
@@ -86,22 +86,6 @@ function putOnShelf() {
 /** searchShelf takes in an isbn to search for and alerts the user of the various email addresses that they can contact to borrow the book **/
 function searchShelf() {
   
-  
-  let latitude = 38.957;
-  let longitude = -95.255;
-
-  if ("geolocation" in navigator)
-  {
-    latitude = navigator.geolocation.getCurrentPosition(function(position) {
-      console.log("in func, lat is: " + position.coords.latitude)
-      return position.coords.latitude;
-    });
-  
-    longitude = navigator.geolocation.getCurrentPosition(function(position) {
-      return position.coords.longitude;
-    });
-  }
-  
 
   let title = document.getElementById("title").value;
   // let author = document.getElementById("author").value;
@@ -117,8 +101,8 @@ function searchShelf() {
         title: title? title : "null", 
         isbn: isbn? isbn : "null",
         radius: searchRadius? searchRadius : "null",
-        latitude: latitude? latitude : "null",
-        longitude: longitude? latitude : "null",
+        latitude: latitude? latitude: 38.957,
+        longitude: longitude? longitude: -95.255,
         searchBy: searchBy? searchBy : "null"
       })
     },
@@ -148,9 +132,8 @@ function getLocation()
     function success(position) {
       latitude  = position.coords.latitude;
       longitude = position.coords.longitude;
-      console.log("lat is " + latitude);
     }
-    
+   
     function error() {
       console.log('Unable to retrieve your location');
     }
@@ -158,7 +141,6 @@ function getLocation()
     if (!navigator.geolocation) {
         console.log('Geolocation is not supported by your browser');
     } else {
-        console.log("Locating…");
       navigator.geolocation.getCurrentPosition(success, error);
     }
     
