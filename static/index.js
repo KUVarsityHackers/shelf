@@ -47,18 +47,23 @@ function putOnShelf() {
   let email = document.getElementById("email").value;
   let isbn = document.getElementById("isbn").value;
 
+  if (userID.length == 0)
+  {
+    alert("You must insert a username.");
+    return;
+  }
+  else if (email == "")
+  {
+    alert("You must insert an email.");
+    return;
+  }
+  else if (isbn == "")
+  {
+    alert("You must insert an isbn number.");
+    return;
+  }
 
   const url = "/listing";
-  // let response = $.post(url, {
-  //   json_string: JSON.stringify({
-  //     user: userID,
-  //     email: email,
-  //     isbn: isbn
-  //   })
-  // })
-
-  //need to make this happen after the first
-
 
   $.ajax({
     type: "POST",
