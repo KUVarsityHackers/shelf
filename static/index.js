@@ -90,6 +90,11 @@ function searchShelf() {
   // let author = document.getElementById("author").value;
   let isbn = document.getElementById("borrowISBN").value;
   let searchRadius = document.getElementById("radius").value;
+  if (searchRadius <= 0)
+  {
+    alert("Search Radius must be greater than 0");
+    return;
+  }
   let message;
   const url = "/api/search";
   $.ajax({
@@ -139,7 +144,14 @@ function searchShelf() {
       {
         finalString = finalString + parsed[i] + "\n"
       }
-      alert(finalString);
+      if (parsed.length == 0)
+      {
+        alert("Sorry: Match not found. Please Try another book.")
+      }
+      else
+      {
+        alert(finalString);
+      }
     },
     dataType: 'text',
     async: false
