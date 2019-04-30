@@ -615,6 +615,46 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "The logo still exists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "18f740e7-f12c-4895-a9c7-008e5671c681",
+						"exec": [
+							"pm.test(\"List.html retruns status OK\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://shelf-1.appspot.com/static/resources/logo.png",
+					"protocol": "https",
+					"host": [
+						"shelf-1",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"static",
+						"resources",
+						"logo.png"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
