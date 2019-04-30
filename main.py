@@ -39,7 +39,6 @@ def getBookInfo(isbnNum):
 @app.route('/', methods=['GET', 'POST'])
 def main():
     return render_template('home.html')
-    #return render_template('index.html')
 
 
 @app.errorhandler(500)
