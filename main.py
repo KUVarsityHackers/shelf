@@ -71,10 +71,6 @@ def toList():
 def toBorrow():
     return render_template('borrow.html')
 
-@app.route('/barcode.html', methods=['GET', 'POST'])
-def toBarcode():
-    return render_template('barcode.html')
-
 @app.route('/listing' , methods=['POST', 'GET'])
 def listing():
     s = request.form.to_dict()['json_string']
