@@ -45,25 +45,15 @@ function putOnShelf() {
   let email = document.getElementById("email").value;
   let isbn = document.getElementById("isbn").value;
 
-  let latitude = 38.957;
-  let longitude = -95.255;
+  let latitude = null;
+  let longitude = null;
 
 
-
-  if ("geolocation" in navigator)
+  function saveData(x,y)
   {
-    latitude = navigator.geolocation.getCurrentPosition(function(position) {
-      console.log("in func, lat is: " + position.coords.latitude)
-      return position.coords.latitude;
-    });
-  
-    longitude = navigator.geolocation.getCurrentPosition(function(position) {
-      return position.coords.longitude;
-    });
+    latitude = x;
+    longitude = y;
   }
-
-    console.log("Latitude is " + latitude + " - Longitude is " + longitude);
-
 
   const url = "/listing";
   // let response = $.post(url, {
@@ -75,7 +65,22 @@ function putOnShelf() {
   // })
 
   //need to make this happen after the first
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
+  async function waitforGeo() {
+  if (!("geolocation" in navigator)) {
+    await sleep(500);
+  }
+else{
+  navigator.geolocation.getCurrentPosition(function(position) {
+    saveData(position.coords.latitude, position.coords.longitude);
+  });
+}}
+  
+  waitforGeo().then(promise)
+  .then(function () {
   $.ajax({
     type: "POST",
     url: url,
@@ -94,6 +99,7 @@ function putOnShelf() {
     dataType: 'text',
     async: false
   })  
+})
 }
 
 
