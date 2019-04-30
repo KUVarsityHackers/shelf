@@ -1,0 +1,620 @@
+{
+	"info": {
+		"_postman_id": "2cf5acea-fe06-49b2-b638-ea39cb8770c5",
+		"name": "shelfTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ISBN not found",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b377e03e-71e8-4e28-8a7f-d34d11fe08a9",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d232435f-eeaf-4781-b2ea-ed481de66a53",
+						"exec": [
+							"pm.test(\"status OK\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body does not list book when ISBN not found\", function(){",
+							"    pm.expect(pm.response.text()).to.include(\"Could not find match\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "data",
+						"value": "{\n    type: \"POST\",\n    url: url,\n    data: {\n      json_string: \"{\n       user: userID,\n       email: email,\n       isbn: 9781591841838,\n       lat: 38.957,\n       lon:  -95.255\n      }\"\n    },\n    success: function (response) {\n      alert(response);\n    },\n    dataType: 'text',\n    async: false\n  })  \n}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "json_string",
+							"value": "{\"user\":\"nn\",\"email\":\"NDJ\",\"isbn\":\"999\",\"lat\":38.957,\"lon\":-95.255}",
+							"type": "text"
+						},
+						{
+							"key": "user",
+							"value": "nathan",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "nnichol",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "latitude",
+							"value": "38",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "longitude",
+							"value": "-119",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://shelf-1.appspot.com/listing?",
+					"protocol": "https",
+					"host": [
+						"shelf-1",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"listing"
+					],
+					"query": [
+						{
+							"key": "isbn",
+							"value": "9781591841838",
+							"disabled": true
+						},
+						{
+							"key": "user",
+							"value": "nathan",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "nnichol",
+							"disabled": true
+						},
+						{
+							"key": "latitude",
+							"value": "38",
+							"disabled": true
+						},
+						{
+							"key": "longitude",
+							"value": "-119",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ISBN found",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b377e03e-71e8-4e28-8a7f-d34d11fe08a9",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d232435f-eeaf-4781-b2ea-ed481de66a53",
+						"exec": [
+							"pm.test(\"status OK\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body lists book appropriately when ISBN found\", function(){",
+							"    pm.expect(pm.response.text()).to.include(\"You have successfully added\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "data",
+						"type": "text",
+						"value": "{\n    type: \"POST\",\n    url: url,\n    data: {\n      json_string: \"{\n       user: userID,\n       email: email,\n       isbn: 9781591841838,\n       lat: 38.957,\n       lon:  -95.255\n      }\"\n    },\n    success: function (response) {\n      alert(response);\n    },\n    dataType: 'text',\n    async: false\n  })  \n}",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "json_string",
+							"value": "{\"user\":\"nn\",\"email\":\"NDJ\",\"isbn\":\"9780399594496\",\"lat\":38.957,\"lon\":-95.255}",
+							"type": "text"
+						},
+						{
+							"key": "user",
+							"value": "nathan",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "nnichol",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "latitude",
+							"value": "38",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "longitude",
+							"value": "-119",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://shelf-1.appspot.com/listing?",
+					"protocol": "https",
+					"host": [
+						"shelf-1",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"listing"
+					],
+					"query": [
+						{
+							"key": "isbn",
+							"value": "9781591841838",
+							"disabled": true
+						},
+						{
+							"key": "user",
+							"value": "nathan",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "nnichol",
+							"disabled": true
+						},
+						{
+							"key": "latitude",
+							"value": "38",
+							"disabled": true
+						},
+						{
+							"key": "longitude",
+							"value": "-119",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list.html renders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2108041b-3d05-4247-9474-ab898e75e5a3",
+						"exec": [
+							"pm.test(\"List.html retruns status OK\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://shelf-1.appspot.com/list.html",
+					"protocol": "https",
+					"host": [
+						"shelf-1",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"list.html"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "URL redirects to home",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8617bd54-ea2b-493c-9c58-38801c895897",
+						"exec": [
+							"pm.test(\"index retruns status OK\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://shelf-1.appspot.com",
+					"protocol": "https",
+					"host": [
+						"shelf-1",
+						"appspot",
+						"com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "home.html renders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f027ddb9-1b3b-46f8-b840-a94fe92e7513",
+						"exec": [
+							"pm.test(\"home.html retruns status OK\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://shelf-1.appspot.com/home.html",
+					"protocol": "https",
+					"host": [
+						"shelf-1",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"home.html"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borrow.html renders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5f5718d9-6a23-42b0-91b7-b628813a2cf6",
+						"exec": [
+							"pm.test(\"borrow.html retruns status OK\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://shelf-1.appspot.com/borrow.html",
+					"protocol": "https",
+					"host": [
+						"shelf-1",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"borrow.html"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Title search returns no books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "36499a66-9ee1-4639-9360-637f7c25d6af",
+						"exec": [
+							"pm.test(\"status OK\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"search by title returns no books when none exist\", function(){",
+							"    pm.expect(pm.response.text()).to.include(\"[]\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "json_string",
+							"value": "{\"title\":\"Tump\",\"isbn\":\"null\",\"radius\":\"55\",\"latitude\":38.957,\"longitude\":-95.255,\"searchBy\":\"Title\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://shelf-1.appspot.com/api/search",
+					"protocol": "https",
+					"host": [
+						"shelf-1",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ISBN search returns no books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "36499a66-9ee1-4639-9360-637f7c25d6af",
+						"exec": [
+							"pm.test(\"status OK\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"search by isbn returns no books that when none exist\", function(){",
+							"    pm.expect(pm.response.text()).to.include(\"[]\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "json_string",
+							"value": "{\"title\":\"null\",\"isbn\":\"9781420922593\",\"radius\":\"55\",\"latitude\":38.957,\"longitude\":-95.255,\"searchBy\":\"isbn\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://shelf-1.appspot.com/api/search",
+					"protocol": "https",
+					"host": [
+						"shelf-1",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Title search returns books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "36499a66-9ee1-4639-9360-637f7c25d6af",
+						"exec": [
+							"pm.test(\"status OK\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"search by title returns appropriate books\", function(){",
+							"    pm.expect(pm.response.text()).to.not.include(\"[]\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "json_string",
+							"value": "{\"title\":\"freakonomics\",\"isbn\":\"null\",\"radius\":\"55\",\"latitude\":38.957,\"longitude\":-95.255,\"searchBy\":\"Title\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://shelf-1.appspot.com/api/search",
+					"protocol": "https",
+					"host": [
+						"shelf-1",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ISBN search returns books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "36499a66-9ee1-4639-9360-637f7c25d6af",
+						"exec": [
+							"pm.test(\"status OK\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"search by isbn returns appropriate books\", function(){",
+							"    pm.expect(pm.response.text()).to.not.include(\"[]\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "json_string",
+							"value": "{\"title\":\"null\",\"isbn\":\"9781420922493\",\"radius\":\"55\",\"latitude\":38.957,\"longitude\":-95.255,\"searchBy\":\"isbn\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://shelf-1.appspot.com/api/search",
+					"protocol": "https",
+					"host": [
+						"shelf-1",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"search"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
