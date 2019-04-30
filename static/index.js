@@ -1,5 +1,7 @@
 /** functions that affect the html page in response to user choice, and sets global variable **/
 let searchBy;
+let latitude = null;
+let longitude = null;
 function titleSearch(){
     let titleLabel = document.getElementById("bkLabel");
     let titleField = document.getElementById("title");
@@ -45,25 +47,6 @@ function putOnShelf() {
   let email = document.getElementById("email").value;
   let isbn = document.getElementById("isbn").value;
 
-  let latitude = 38.957;
-  let longitude = -95.255;
-
-
-
-  if ("geolocation" in navigator)
-  {
-    latitude = navigator.geolocation.getCurrentPosition(function(position) {
-      console.log("in func, lat is: " + position.coords.latitude)
-      return position.coords.latitude;
-    });
-  
-    longitude = navigator.geolocation.getCurrentPosition(function(position) {
-      return position.coords.longitude;
-    });
-  }
-
-    console.log("Latitude is " + latitude + " - Longitude is " + longitude);
-
 
   const url = "/listing";
   // let response = $.post(url, {
@@ -76,6 +59,7 @@ function putOnShelf() {
 
   //need to make this happen after the first
 
+
   $.ajax({
     type: "POST",
     url: url,
@@ -84,7 +68,7 @@ function putOnShelf() {
        user: userID,
        email: email,
        isbn: isbn,
-       lat: latitude? latitude: 38.957,
+       lat: latitude? latitude: 0,//38.957,
        lon: longitude? longitude: -95.255
       })
     },
@@ -94,6 +78,7 @@ function putOnShelf() {
     dataType: 'text',
     async: false
   })  
+
 }
 
 
@@ -155,4 +140,26 @@ function searchShelf() {
     async: false
   })
 
+}
+
+
+function getLocation()
+{ 
+    function success(position) {
+      latitude  = position.coords.latitude;
+      longitude = position.coords.longitude;
+      console.log("lat is " + latitude);
+    }
+    
+    function error() {
+      console.log('Unable to retrieve your location');
+    }
+    
+    if (!navigator.geolocation) {
+        console.log('Geolocation is not supported by your browser');
+    } else {
+        console.log("Locating…");
+      navigator.geolocation.getCurrentPosition(success, error);
+    }
+    
 }
