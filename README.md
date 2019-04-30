@@ -55,6 +55,18 @@ example.com/docs/
 
 For deployment to a live system make sure to turn flask debug mode off
 
+## Testing
+
+must have newman installed
+to install:
+```
+npm install -g newman
+```
+and run:
+```
+newman run shelfTest.postman_collection.json
+```
+
 ## Built With
 
 * [Flask](http://flask.pocoo.org) - The backend server used
@@ -68,7 +80,7 @@ served as scrum master, handling documentation requirements as well as code vali
 
 * **Michael Svoren** - *Michael helped implement the Firebase for use in shelf. Additionally, he generated book info from an isbn number and was responsible for formatting the output when a user borrows. He worked to clean and beautify several html pages as well. Finally, Michael ideated the storage structure in the database.* - [mdsvoren](https://github.com/mdsvoren)
 
-* **Nathan Nichols** - *Nathan helped develop the front end html and css. He was instrumental in achieving the premium feel that shelf wants to achieve. Nathan also stepped in to fix back end server issues when needed, proving invaluable there.* - [natenichols](https://github.com/natenichols)
+* **Nathan Nichols** - *Nathan helped develop the front end html and css. He was instrumental in achieving the premium feel that shelf wants to achieve. Nathan also stepped in to fix back end server issues when needed, proving invaluable there. He also implemented all tests.* - [natenichols](https://github.com/natenichols)
 
 * **Colin Floyd** - *Colin labored on the on the front end html and css. Colin handled the posting of information to a js file and then from there to the server where python handled in. * - [czfloyd](https://github.com/czfloyd)
 
