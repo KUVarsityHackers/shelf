@@ -45,11 +45,13 @@ function putOnShelf() {
   let email = document.getElementById("email").value;
   let isbn = document.getElementById("isbn").value;
 
-  let latitude = null;
-  let longitude = null;
+  let latitude = 38.957;
+  let longitude = -95.255;
 
-  let promise = new Promise(function(resolve, reject) { 
-    
+
+
+  if ("geolocation" in navigator)
+  {
     latitude = navigator.geolocation.getCurrentPosition(function(position) {
       console.log("in func, lat is: " + position.coords.latitude)
       return position.coords.latitude;
@@ -58,10 +60,9 @@ function putOnShelf() {
     longitude = navigator.geolocation.getCurrentPosition(function(position) {
       return position.coords.longitude;
     });
+  }
 
     console.log("Latitude is " + latitude + " - Longitude is " + longitude);
-    resolve();
-  });
 
 
   const url = "/listing";
@@ -74,17 +75,7 @@ function putOnShelf() {
   // })
 
   //need to make this happen after the first
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
 
-  function waitforGeo() {
-  if (!("geolocation" in navigator)) {
-    await sleep(500);
-  }}
-  
-  waitforGeo().then(promise)
-  .then(function () {
   $.ajax({
     type: "POST",
     url: url,
@@ -103,28 +94,27 @@ function putOnShelf() {
     dataType: 'text',
     async: false
   })  
-})
-.catch(function(){
-  console.log("Error in list POST")
-})
 }
+
 
 
 /** searchShelf takes in an isbn to search for and alerts the user of the various email addresses that they can contact to borrow the book **/
 function searchShelf() {
-  let latitude = navigator.geolocation.getCurrentPosition(function(position) {
-    return position.coords.latitude;
-  });
+  
+  
+  let latitude = 38.957;
+  let longitude = -95.255;
 
-  let longitude = navigator.geolocation.getCurrentPosition(function(position) {
-    return position.coords.longitude;
-  });
-
-  //set defaults
-  if (longitude == null || latitude == null)
+  if ("geolocation" in navigator)
   {
-    latitude = 38.957
-    longitude = -95.255
+    latitude = navigator.geolocation.getCurrentPosition(function(position) {
+      console.log("in func, lat is: " + position.coords.latitude)
+      return position.coords.latitude;
+    });
+  
+    longitude = navigator.geolocation.getCurrentPosition(function(position) {
+      return position.coords.longitude;
+    });
   }
   
 
