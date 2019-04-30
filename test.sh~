@@ -1,0 +1,4 @@
+curl -I -L http://127.0.0.1:8080/home.html
+curl -I -L http://127.0.0.1:8080/borrow.html
+curl -I -L http://127.0.0.1:8080/list.html
+
