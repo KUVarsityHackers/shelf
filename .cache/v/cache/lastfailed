@@ -1,5 +1,0 @@
-{
-  "test_server.py": true, 
-  "test_server.py::test_empty_db": true, 
-  "test_server.py::test_inital_render": true
-}

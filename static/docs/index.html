@@ -75,7 +75,7 @@
 
     
 
-    <h3 id="global-nav">Global</h3><ul><li><a href="global.html#onSubmit">onSubmit</a></li><li><a href="global.html#putOnShelf">putOnShelf</a></li></ul>
+    <h3 id="global-nav">Global</h3><ul><li><a href="global.html#onSubmit">onSubmit</a></li><li><a href="global.html#putOnShelf">putOnShelf</a></li><li><a href="global.html#searchBy">searchBy</a></li><li><a href="global.html#searchShelf">searchShelf</a></li></ul>
   </nav>
 
   <div id="main">
@@ -107,28 +107,51 @@ Requirements can be found in the requirrements.txt file in the root directory.</
 <pre class="prettyprint source"><code>jsdoc -c config.json</code></pre><p>from the root directory</p>
 <p>docs will be built in &quot;static/docs/&quot; directory and can be accessed through</p>
 <pre class="prettyprint source"><code>example.com/docs/</code></pre><h2>Deployment</h2><p>For deployment to a live system make sure to turn flask debug mode off</p>
-<h2>Built With</h2><ul>
+<h2>Testing</h2><p>must have newman installed
+to install:</p>
+<pre class="prettyprint source"><code>npm install -g newman</code></pre><p>and run:</p>
+<pre class="prettyprint source"><code>newman run shelfTest.postman_collection.json</code></pre><h2>Built With</h2><ul>
 <li><a href="http://flask.pocoo.org">Flask</a> - The backend server used</li>
 <li><a href="https://firebase.google.com/docs/">Firebase</a> - The storage method</li>
 <li><a href="http://usejsdoc.org">JsDoc3</a> - Used to generate autodocumentation</li>
 </ul>
 <h2>Authors</h2><ul>
-<li><p><strong>Andre Kurat</strong> - <em>Initial work</em> - <a href="https://github.com/AndreKurait">AndreKurait</a></p>
+<li><p><strong>Andre Kurat</strong> - <em>Andre
+served as scrum master, handling documentation requirements as well as code validation and testing. Andre also solved many bugs with the various backend systems used that arose. Most importantly, Andre designed the cowsay logo.</em> - <a href="https://github.com/AndreKurait">AndreKurait</a></p>
 </li>
-<li><p><strong>Michael Svoren</strong> - <em>Initial work</em> - <a href="https://github.com/mdsvoren">mdsvoren</a></p>
+<li><p><strong>Michael Svoren</strong> - <em>Michael helped implement the Firebase for use in shelf. Additionally, he generated book info from an isbn number and was responsible for formatting the output when a user borrows. He worked to clean and beautify several html pages as well. Finally, Michael ideated the storage structure in the database.</em> - <a href="https://github.com/mdsvoren">mdsvoren</a></p>
 </li>
-<li><p><strong>Nathan Nichols</strong> - <em>Initial work</em> - <a href="https://github.com/natenichols">natenichols</a></p>
+<li><p><strong>Nathan Nichols</strong> - <em>Nathan helped develop the front end html and css. He was instrumental in achieving the premium feel that shelf wants to achieve. Nathan also stepped in to fix back end server issues when needed, proving invaluable there. He also implemented all tests.</em> - <a href="https://github.com/natenichols">natenichols</a></p>
 </li>
-<li><p><strong>Colin Floyd</strong> - <em>Initial work</em> - <a href="https://github.com/czfloyd">czfloyd</a></p>
+<li><p><strong>Colin Floyd</strong> - <em>Colin labored on the on the front end html and css. Colin handled the posting of information to a js file and then from there to the server where python handled in. </em> - <a href="https://github.com/czfloyd">czfloyd</a></p>
 </li>
-<li><p><strong>Tiernon Riesenmy</strong> - <em>Initial work</em> - <a href="https://github.com/TiernonRR">TiernonRR</a></p>
+<li><p><strong>Tiernon Riesenmy</strong> - <em>Tiernon masterminded the firebase implementation of firebase for the database. He wrote the abilities to read and write from the database, also overcoming major obstacles faced in getting the returned data all the way back to the JS file. Tiernon also helped make the site more robust, by adding in fail safes to bad in put or misinterpreted information by the api calls.</em> - <a href="https://github.com/TiernonRR">TiernonRR</a></p>
 </li>
 </ul>
 <h2>License</h2><p>This project is licensed under the MIT License</p>
 <h1>Build Process</h1><h2>Gantt Chart</h2><p>You can find the most up to date gantt chart used <a href="https://docs.google.com/spreadsheets/d/1LpeLnEP7ImVL90qSGQHIsktWfbXGHQE5Drwao6LR-2w/edit?usp=sharing">here</a></p>
 <p><img src="gantt.png" alt=""></p>
-<h2>UML</h2><h3>State Diagram</h3><h3>Use Case Diagram</h3><p><img src="uml-useCase.png" alt=""></p>
-<h3>Class Diagram</h3>
+<h2>Scrum Artifacts</h2><p>You can find the Product Backlog <a href="https://docs.google.com/spreadsheets/d/1T_-BsET3-Mhd6G8vbVHBQqs77u45WcXDNMd-9sdvAjQ/edit?usp=sharing">here</a></p>
+<p>You can find the Sprint Backlog <a href="https://docs.google.com/spreadsheets/d/1ktC6fxbPKud45chsLSqZ9oB99sTQhaG9CjEtAdsIe-s/edit?usp=sharing">here</a></p>
+<h2>Meeting Documentation</h2><p>3/26/19
+Meeting Attendees: All
+Location: Spahr Library
+Objective: Solidify project purpose and divide tasks
+Conclusion: Reached shelf idea and mission, divided tasks among 5 team members</p>
+<p>4/2/19
+Meeting Attendees: All
+Location: Spahr Library
+Objective: Figure out interaction between front and back end
+Conclusion: Determined json structure and clarified utilization of http. Finished front end template.</p>
+<p>4/9/19
+Meeting Attendees: All (at various times)
+Location: Google Hangouts
+Objective: Finish MVP
+Conclusion: Finished MVP, overcame bugs revolving around the server in development mode as well as bizzare returned objects from firestore. Figured out how to interpret returned documents and display to user.</p>
+<p>Much of our communication was done through Slack throughout the weeks that we invested ourselves on this project.</p>
+<h2>UML</h2><h3>State Diagram</h3><p><img src="uml-State.png" alt=""></p>
+<h3>Use Case Diagram</h3><p><img src="uml-useCase.png" alt=""></p>
+<h3>Class Diagram</h3><p><img src="uml-class.png" alt=""></p>
     </article>
   </section>
 

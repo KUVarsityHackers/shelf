@@ -2,3 +2,5 @@
 *.pyc
 .DS_Store
 __pychace__
+.cache
+.vscode
