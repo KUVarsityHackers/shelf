@@ -2,27 +2,27 @@
 let searchBy;
 let latitude = null;
 let longitude = null;
-function titleSearch(){
-    let titleLabel = document.getElementById("bkLabel");
-    let titleField = document.getElementById("title");
-    let isbnLabel = document.getElementById("isbnLabel");
-    let isbnField = document.getElementById("borrowISBN");
-    titleLabel.style.display = "block";
-    titleField.style.display = "block";
-    isbnLabel.style.display  = "none";
-    isbnField.style.display  = "none";
-    searchBy = "Title";
+function titleSearch() {
+  let titleLabel = document.getElementById("bkLabel");
+  let titleField = document.getElementById("title");
+  let isbnLabel = document.getElementById("isbnLabel");
+  let isbnField = document.getElementById("borrowISBN");
+  titleLabel.style.display = "block";
+  titleField.style.display = "block";
+  isbnLabel.style.display = "none";
+  isbnField.style.display = "none";
+  searchBy = "Title";
 }
 
-function isbnSearch(){
+function isbnSearch() {
   let titleLabel = document.getElementById("bkLabel");
   let titleField = document.getElementById("title");
   let isbnLabel = document.getElementById("isbnLabel");
   let isbnField = document.getElementById("borrowISBN");
   titleLabel.style.display = "none";
   titleField.style.display = "none";
-  isbnLabel.style.display  = "block";
-  isbnField.style.display  = "block";
+  isbnLabel.style.display = "block";
+  isbnField.style.display = "block";
   searchBy = "ISBN";
 }
 
@@ -47,18 +47,15 @@ function putOnShelf() {
   let email = document.getElementById("email").value;
   let isbn = document.getElementById("isbn").value;
 
-  if (userID.length == 0)
-  {
+  if (userID.length == 0) {
     alert("You must insert a username.");
     return;
   }
-  else if (email == "")
-  {
+  else if (email == "") {
     alert("You must insert an email.");
     return;
   }
-  else if (isbn == "")
-  {
+  else if (isbn == "") {
     alert("You must insert an isbn number.");
     return;
   }
@@ -74,11 +71,11 @@ function putOnShelf() {
     url: url,
     data: {
       json_string: JSON.stringify({
-       user: userID,
-       email: email,
-       isbn: isbn,
-       lat: latitude? latitude: 38.957,
-       lon: longitude? longitude: -95.255
+        user: userID,
+        email: email,
+        isbn: isbn,
+        lat: latitude ? latitude : 38.957,
+        lon: longitude ? longitude : -95.255
       })
     },
     success: function (response) {
@@ -86,7 +83,7 @@ function putOnShelf() {
     },
     dataType: 'text',
     async: false
-  })  
+  })
 
 }
 
@@ -94,13 +91,12 @@ function putOnShelf() {
 
 /** searchShelf takes in an isbn to search for and alerts the user of the various email addresses that they can contact to borrow the book **/
 function searchShelf() {
-  
-  let title = document.getElementById("title").value.replace("'","/");
+
+  let title = document.getElementById("title").value.replace("'", "/");
   // let author = document.getElementById("author").value;
   let isbn = document.getElementById("borrowISBN").value;
   let searchRadius = document.getElementById("radius").value;
-  if (searchRadius <= 0)
-  {
+  if (searchRadius <= 0) {
     alert("Search Radius must be greater than 0");
     return;
   }
@@ -111,12 +107,12 @@ function searchShelf() {
     url: url,
     data: {
       json_string: JSON.stringify({
-        title: title? title : "null", 
-        isbn: isbn? isbn : "null",
-        radius: searchRadius? searchRadius : "null",
-        latitude: latitude? latitude: 38.957,
-        longitude: longitude? longitude: -95.255,
-        searchBy: searchBy? searchBy : "null"
+        title: title ? title : "null",
+        isbn: isbn ? isbn : "null",
+        radius: searchRadius ? searchRadius : "null",
+        latitude: latitude ? latitude : 38.957,
+        longitude: longitude ? longitude : -95.255,
+        searchBy: searchBy ? searchBy : "null"
       })
     },
     success: function (response) {
@@ -124,20 +120,15 @@ function searchShelf() {
 
       let parsed = [];
       let item = "";
-      for (let i = 0; i<initialParse.length; i++)
-      {
-        if (i%2 == 1)
-        {
+      for (let i = 0; i < initialParse.length; i++) {
+        if (i % 2 == 1) {
           item = "Email: ";
           item = item + initialParse[i];
         }
-        else if (i>1)
-        {
+        else if (i > 1) {
           smallParse = "";
-          for (let j = 0; j< initialParse[i].length; j++)
-          {
-            if (j>1 && j < 8 && (!isNaN(initialParse[i][j]) || initialParse[i][j] == '.'))
-            {
+          for (let j = 0; j < initialParse[i].length; j++) {
+            if (j > 1 && j < 8 && (!isNaN(initialParse[i][j]) || initialParse[i][j] == '.')) {
               smallParse = smallParse + initialParse[i][j];
             }
           }
@@ -149,16 +140,13 @@ function searchShelf() {
       }
 
       finalString = "CONTACT THE FOLLOWING TO BORROW YOUR BOOK:\n\n"
-      for (let i = 0; i < parsed.length; i++)
-      {
+      for (let i = 0; i < parsed.length; i++) {
         finalString = finalString + parsed[i] + "\n"
       }
-      if (parsed.length == 0)
-      {
+      if (parsed.length == 0) {
         alert("Sorry: Match not found. Please Try another book.")
       }
-      else
-      {
+      else {
         alert(finalString);
       }
     },
@@ -169,21 +157,20 @@ function searchShelf() {
 }
 
 
-function getLocation()
-{ 
-    function success(position) {
-      latitude  = position.coords.latitude;
-      longitude = position.coords.longitude;
-    }
-   
-    function error() {
-      console.log('Unable to retrieve your location');
-    }
-    
-    if (!navigator.geolocation) {
-        console.log('Geolocation is not supported by your browser');
-    } else {
-      navigator.geolocation.getCurrentPosition(success, error);
-    }
-    
+function getLocation() {
+  function success(position) {
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+  }
+
+  function error() {
+    console.log('Unable to retrieve your location');
+  }
+
+  if (!navigator.geolocation) {
+    console.log('Geolocation is not supported by your browser');
+  } else {
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
+
 }
