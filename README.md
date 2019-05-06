@@ -77,10 +77,10 @@ newman run shelfTest.postman_collection.json
 
 ## Authors
 
-* **Andre Kurat** - *Andre
-served as scrum master, handling documentation requirements as well as code validation and testing. Andre also solved many bugs with the various backend systems used that arose. Most importantly, Andre designed the cowsay logo.* - [AndreKurait](https://github.com/AndreKurait)
+* **Andre Kurait** - *Andre
+served as scrum master, handling documentation requirements as well as code validation and testing. Andre also solved many bugs with the various backend systems used that arose. Most importantly, Andre designed the cowsay logo. * - [AndreKurait](https://github.com/AndreKurait)
 
-* **Michael Svoren** - *Michael helped implement the Firebase for use in shelf. Additionally, he generated book info from an isbn number and was responsible for formatting the output when a user borrows. He worked to clean and beautify several html pages as well. Finally, Michael ideated the storage structure in the database.* - [mdsvoren](https://github.com/mdsvoren)
+* **Michael Svoren** - *Michael helped implement the Firebase for use in shelf. Additionally, he generated book info from an isbn number and was responsible for formatting the output when a user borrows. He worked to clean and beautify several html pages as well. Finally, Michael ideated the storage structure in the database. For project 4, Michael implemented the geolocation feature as well as the search within a certain radius functionality.* - [mdsvoren](https://github.com/mdsvoren)
 
 * **Nathan Nichols** - *Nathan helped develop the front end html and css. He was instrumental in achieving the premium feel that shelf wants to achieve. Nathan also stepped in to fix back end server issues when needed, proving invaluable there. He also implemented all tests.* - [natenichols](https://github.com/natenichols)
 
@@ -128,6 +128,31 @@ Objective: Finish MVP
 Conclusion: Finished MVP, overcame bugs revolving around the server in development mode as well as bizzare returned objects from firestore. Figured out how to interpret returned documents and display to user.
 
 Much of our communication was done through Slack throughout the weeks that we invested ourselves on this project.
+
+Project 4:
+4/11/19
+Meeting Attendees: All
+Location: Spahr Library
+Objective: Divide up Project 4 Tasks
+Conclusion: Split work as follows: Tiernon - search by title, Michael - geolocation and search radius, Nathan - testing, Andre - server side operations and google app engine, Colin - bugfixes and front-end formatting.
+
+4/18/19
+Meeting Attendees: Michael, Tiernon, & Nathan
+Location: Student Org Office
+Objective: Make progress on our tasks
+Conclusion: Decided how to implement testing (Postman), enabled searching within specified distance.
+
+4/25/19
+Meeting Attendees: All
+Location: Student Org Office
+Objective: Work out bugs on our respective tasks
+Conclusion: Implemented JS promises for geolocation (still doesn't work), Testing with Postman setup but not complete, Search by Title pretty much finished.
+
+4/30/19
+Meeting Attendees: All at various times
+Location: Google Hangout
+Objective: Make sure everything works together as intended and tests pass
+Conclusion: Changed when geolocation is requested to on page load. This solved the earlier mentioned javascript promise issue. Everything works as desired, all tests pass.
 
 ## UML
 
