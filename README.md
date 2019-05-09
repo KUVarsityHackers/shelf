@@ -161,7 +161,7 @@ Conclusion: Changed when geolocation is requested to on page load. This solved t
 
 ### State Diagram
 
-![](uml-State.png)
+![](State Diagram for Project 4.png)
 
 ### Use Case Diagram
 
