@@ -86,7 +86,7 @@ served as scrum master, handling documentation requirements as well as code vali
 
 * **Colin Floyd** - *Colin labored on the on the front end html and css. Colin handled the posting of information to a js file and then from there to the server where python handled in. * - [czfloyd](https://github.com/czfloyd)
 
-* **Tiernon Riesenmy** - *Tiernon masterminded the firebase implementation of firebase for the database. He wrote the abilities to read and write from the database, also overcoming major obstacles faced in getting the returned data all the way back to the JS file. Tiernon also helped make the site more robust, by adding in fail safes to bad in put or misinterpreted information by the api calls.* - [TiernonRR](https://github.com/TiernonRR)
+* **Tiernon Riesenmy** - *Tiernon masterminded the firebase implementation of firebase for the database. He wrote the abilities to read and write from the database, also overcoming major obstacles faced in getting the returned data all the way back to the JS file. Tiernon also helped make the site more robust, by adding in fail safes to bad in put or misinterpreted information by the api calls.  He also determined how to query by title in the second iteration of the project.* - [TiernonRR](https://github.com/TiernonRR)
 
 ## License
 
