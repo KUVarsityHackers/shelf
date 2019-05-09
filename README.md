@@ -2,6 +2,9 @@
 
 ## https://shelf-1.appspot.com/home.html
 
+## Prebuilt Documentation
+### https://shelf-1.appspot.com/docs
+
 shelf is a web app designed to streamline the process of borrowing books within a community. Communities tied together through school, religion, location, or any other shared interests can now consolidate a massive crowd-sourced library of media to share between each other.
 
 ## Getting Started
