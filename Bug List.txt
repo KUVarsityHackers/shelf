@@ -1,0 +1,11 @@
+﻿* Current Bugs
+   * Barcode scanner button unresponsive upon final commit.
+   * Barcode scanner button doesn’t work if clicked, canceled, then clicked again.
+   * Books that include double quotations will cause error in JSON parse.
+   * If the API returns a JSON without title, published-date, or author, we will have an error.
+   * If barcode attempt fails, a page reload is required.
+* Past Bugs
+   * Books with apostrophes could not be queried.
+      * Fixed by replacing with ‘\’.
+   * Prompt wouldn’t appear unless in debug.
+      * Fixed by setting async to false in ajax call.

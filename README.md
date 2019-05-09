@@ -86,7 +86,7 @@ served as scrum master, handling documentation requirements as well as code vali
 
 * **Colin Floyd** - *Colin labored primarily on the on the front end html and css. He realized the modern minimalistic design while still enabling the smooth core functionality. Colin also handled the flow of information to the javascript file and then from there posted to the server to be handled in the python. * - [czfloyd](https://github.com/czfloyd)
 
-* **Tiernon Riesenmy** - *Tiernon masterminded the firebase implementation of firebase for the database. He wrote the abilities to read and write from the database, also overcoming major obstacles faced in getting the returned data all the way back to the JS file. Tiernon also helped make the site more robust, by adding in fail safes to bad in put or misinterpreted information by the api calls.* - [TiernonRR](https://github.com/TiernonRR)
+* **Tiernon Riesenmy** - *Tiernon masterminded the firebase implementation of firebase for the database. He wrote the abilities to read and write from the database, also overcoming major obstacles faced in getting the returned data all the way back to the JS file. Tiernon also helped make the site more robust, by adding in fail safes to bad in put or misinterpreted information by the api calls.  He also determined how to query by title in the second iteration of the project.* - [TiernonRR](https://github.com/TiernonRR)
 
 ## License
 
@@ -106,6 +106,9 @@ You can find the most up to date gantt chart used [here](https://docs.google.com
 You can find the Product Backlog [here](https://docs.google.com/spreadsheets/d/1T_-BsET3-Mhd6G8vbVHBQqs77u45WcXDNMd-9sdvAjQ/edit?usp=sharing)
 
 You can find the Sprint Backlog [here](https://docs.google.com/spreadsheets/d/1ktC6fxbPKud45chsLSqZ9oB99sTQhaG9CjEtAdsIe-s/edit?usp=sharing)
+
+## Bug List
+You can find our bug list [here](https://github.com/KUVarsityHackers/shelf/blob/master/Bug%20List.txt)
 
 ## Meeting Documentation
 
@@ -168,3 +171,10 @@ Conclusion: Changed when geolocation is requested to on page load. This solved t
 
 ![](uml-class.png)
 
+### User Manual
+
+<object data="https://github.com/KUVarsityHackers/shelf/blob/master/UserManual.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="https://github.com/KUVarsityHackers/shelf/blob/master/UserManual.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/KUVarsityHackers/shelf/blob/master/UserManual.pdf">Download PDF</a>.</p>
+    </embed>
+</object>
