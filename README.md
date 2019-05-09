@@ -168,3 +168,10 @@ Conclusion: Changed when geolocation is requested to on page load. This solved t
 
 ![](uml-class.png)
 
+### User Manual
+
+<object data="https://github.com/KUVarsityHackers/shelf/blob/master/UserManual.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="https://github.com/KUVarsityHackers/shelf/blob/master/UserManual.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/KUVarsityHackers/shelf/blob/master/UserManual.pdf">Download PDF</a>.</p>
+    </embed>
+</object>
