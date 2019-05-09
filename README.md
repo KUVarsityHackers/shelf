@@ -84,7 +84,7 @@ served as scrum master, handling documentation requirements as well as code vali
 
 * **Nathan Nichols** - *Nathan helped develop the front end html and css. He was instrumental in achieving the premium feel that shelf wants to achieve. Nathan also stepped in to fix back end server issues when needed, proving invaluable there. He also implemented all tests.* - [natenichols](https://github.com/natenichols)
 
-* **Colin Floyd** - *Colin labored on the on the front end html and css. Colin handled the posting of information to a js file and then from there to the server where python handled in. * - [czfloyd](https://github.com/czfloyd)
+* **Colin Floyd** - *Colin labored primarily on the on the front end html and css. He realized the modern minimalistic design while still enabling the smooth core functionality. Colin also handled the flow of information to the javascript file and then from there posted to the server to be handled in the python. * - [czfloyd](https://github.com/czfloyd)
 
 * **Tiernon Riesenmy** - *Tiernon masterminded the firebase implementation of firebase for the database. He wrote the abilities to read and write from the database, also overcoming major obstacles faced in getting the returned data all the way back to the JS file. Tiernon also helped make the site more robust, by adding in fail safes to bad in put or misinterpreted information by the api calls.* - [TiernonRR](https://github.com/TiernonRR)
 
