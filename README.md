@@ -165,7 +165,7 @@ Conclusion: Changed when geolocation is requested to on page load. This solved t
 
 ### Use Case Diagram
 
-![](Use Case Diagram for Project 4.pdf)
+![](uml-useCase.png)
 
 ### Class Diagram
 
