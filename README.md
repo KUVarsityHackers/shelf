@@ -107,6 +107,9 @@ You can find the Product Backlog [here](https://docs.google.com/spreadsheets/d/1
 
 You can find the Sprint Backlog [here](https://docs.google.com/spreadsheets/d/1ktC6fxbPKud45chsLSqZ9oB99sTQhaG9CjEtAdsIe-s/edit?usp=sharing)
 
+## Bug List
+You can find our bug list [here](https://github.com/KUVarsityHackers/shelf/blob/master/Bug%20List.txt)
+
 ## Meeting Documentation
 
 3/26/19
