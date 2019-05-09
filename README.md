@@ -77,14 +77,13 @@ newman run shelfTest.postman_collection.json
 
 ## Authors
 
-* **Andre Kurait** - *Andre
-served as scrum master, handling documentation requirements as well as code validation and testing. Andre also solved many bugs with the various backend systems used that arose. Most importantly, Andre designed the cowsay logo. * - [AndreKurait](https://github.com/AndreKurait)
+* **Andre Kurait** - *Andre served as scrum master, handling documentation requirements as well as code validation and testing. Andre also solved many bugs with the various backend systems used that arose. Most importantly, Andre designed the cowsay logo.* - [AndreKurait](https://github.com/AndreKurait)
 
 * **Michael Svoren** - *Michael helped implement the Firebase for use in shelf. Additionally, he generated book info from an isbn number and was responsible for formatting the output when a user borrows. He worked to clean and beautify several html pages as well. Finally, Michael ideated the storage structure in the database. For project 4, Michael implemented the geolocation feature as well as the search within a certain radius functionality.* - [mdsvoren](https://github.com/mdsvoren)
 
 * **Nathan Nichols** - *Nathan helped develop the front end html and css. He was instrumental in achieving the premium feel that shelf wants to achieve. Nathan also stepped in to fix back end server issues when needed, proving invaluable there. He also implemented all tests.* - [natenichols](https://github.com/natenichols)
 
-* **Colin Floyd** - *Colin labored primarily on the on the front end html and css. He realized the modern minimalistic design while still enabling the smooth core functionality. Colin also handled the flow of information to the javascript file and then from there posted to the server to be handled in the python. * - [czfloyd](https://github.com/czfloyd)
+* **Colin Floyd** - *Colin labored primarily on the on the front end html and css. He realized the modern minimalistic design while still enabling the smooth core functionality. Colin also handled the flow of information to the javascript file and then from there posted to the server to be handled in the python.* - [czfloyd](https://github.com/czfloyd)
 
 * **Tiernon Riesenmy** - *Tiernon masterminded the firebase implementation of firebase for the database. He wrote the abilities to read and write from the database, also overcoming major obstacles faced in getting the returned data all the way back to the JS file. Tiernon also helped make the site more robust, by adding in fail safes to bad in put or misinterpreted information by the api calls.  He also determined how to query by title in the second iteration of the project.* - [TiernonRR](https://github.com/TiernonRR)
 
